@@ -13,69 +13,76 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Georgia', serif;
-  color: white;
-  overflow-x: hidden;
+  font-family: "Georgia", serif;
+  background: #f6f1e8;
+  color: #2f241d;
 }
 
-/* SECTION BASE */
-.section {
-  position: relative;
+/* HERO */
+.hero {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 20px;
 }
 
-/* BACKGROUND IMAGE */
-.bg {
-  position: absolute;
+.hero-inner {
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: 44px;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  font-style: italic;
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+.hero img {
   width: 100%;
-  height: 120%;
-  top: 0;
-  left: 0;
+  margin-top: 25px;
+  border-radius: 18px;
+}
+
+/* SECTION */
+.section {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 90px 25px;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.section p {
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+/* TIMELINE */
+.timeline {
+  margin-top: 20px;
+  line-height: 2;
+}
+
+/* FULL WIDTH IMAGE BLOCK */
+.image-block {
+  width: 100%;
+  height: 70vh;
   background-size: cover;
   background-position: center;
-  z-index: -1;
-  transform: translateY(0);
-}
-
-/* DARK OVERLAY */
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.35);
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-/* TEXT */
-.content {
-  max-width: 80%;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s ease;
-}
-
-.content.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-h1 {
-  font-size: 42px;
-  margin: 0;
-}
-
-h2 {
-  font-size: 28px;
-}
-
-p {
-  font-size: 16px;
 }
 
 /* BUTTON */
@@ -83,30 +90,30 @@ p {
   display: inline-block;
   margin-top: 15px;
   padding: 12px 22px;
-  background: rgba(255,255,255,0.9);
-  color: black;
   border-radius: 30px;
+  background: #3b2a22;
+  color: white;
   text-decoration: none;
   font-size: 14px;
 }
 
-/* GALLERY */
-.gallery {
-  background: #f7f1e8;
-  color: #3d2b1f;
-  padding: 40px 20px;
+/* FADE IN */
+.fade {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: all 1s ease;
 }
 
-.gallery img {
-  width: 100%;
-  margin-bottom: 10px;
-  border-radius: 12px;
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
-  h1 { font-size: 28px; }
-  h2 { font-size: 22px; }
+  .hero h1 {
+    font-size: 30px;
+  }
 }
 </style>
 </head>
@@ -114,104 +121,78 @@ p {
 <body>
 
 <!-- HERO -->
-<div class="section">
-  <div class="bg" style="background-image: url('https://i.imgur.com/fDf6us1.jpeg');"></div>
-  <div class="overlay"></div>
-  <div class="content">
+<div class="hero fade">
+  <div class="hero-inner">
     <h1>Ezra May Asa<br>&<br>Gil Jun Anthony Garan</h1>
     <p>August 8, 2026 • Bohol Tropics</p>
+    <img src="https://i.imgur.com/fDf6us1.jpeg">
   </div>
 </div>
 
 <!-- STORY -->
-<div class="section">
-  <div class="bg" style="background-image: url('https://i.imgur.com/fDf6us1.jpeg');"></div>
-  <div class="overlay"></div>
-  <div class="content">
-    <h2>Our Story</h2>
-    <p>A journey of love, patience, and becoming one.</p>
-  </div>
+<div class="section fade">
+  <h2>Our Story</h2>
+  <p>
+    A quiet beginning, a growing love, and a lifetime we choose every day.
+  </p>
 </div>
 
+<!-- IMAGE BREAK -->
+<div class="image-block" style="background-image:url('https://i.imgur.com/OscEMZZ.jpeg')"></div>
+
 <!-- DETAILS -->
-<div class="section">
-  <div class="bg" style="background-image: url('https://i.imgur.com/fDf6us1.jpeg');"></div>
-  <div class="overlay"></div>
-  <div class="content">
-    <h2>Wedding Day</h2>
-    <p>August 8, 2026</p>
-    <p>Bohol Tropics</p>
-  </div>
+<div class="section fade">
+  <h2>Wedding Details</h2>
+  <p>August 8, 2026</p>
+  <p>Bohol Tropics</p>
 </div>
 
 <!-- TIMELINE -->
-<div class="section">
-  <div class="bg" style="background-image: url('https://i.imgur.com/fDf6us1.jpeg');"></div>
-  <div class="overlay"></div>
-  <div class="content">
-    <h2>Timeline</h2>
-    <p>2:00 PM – Arrival</p>
-    <p>3:00 PM – Ceremony</p>
-    <p>5:00 PM – Reception</p>
+<div class="section fade">
+  <h2>Timeline</h2>
+  <div class="timeline">
+    <p>2:00 PM — Guest Arrival</p>
+    <p>3:00 PM — Ceremony</p>
+    <p>5:00 PM — Reception</p>
+    <p>7:00 PM — Celebration</p>
   </div>
 </div>
 
+<!-- IMAGE BREAK -->
+<div class="image-block" style="background-image:url('https://i.imgur.com/c3xIJO0.jpeg')"></div>
+
 <!-- MAP -->
-<div class="section">
-  <div class="bg" style="background-image: url('https://i.imgur.com/fDf6us1.jpeg');"></div>
-  <div class="overlay"></div>
-  <div class="content">
-    <h2>Location</h2>
-    <a class="btn"
-       href="https://www.google.com/maps/search/?api=1&query=Bohol+Tropics"
-       target="_blank">
-       View Map
-    </a>
-  </div>
+<div class="section fade">
+  <h2>Location</h2>
+  <a class="btn"
+     href="https://www.google.com/maps/search/?api=1&query=Bohol+Tropics"
+     target="_blank">
+     Open Map
+  </a>
 </div>
 
 <!-- RSVP -->
-<div class="section">
-  <div class="bg" style="background-image: url('https://i.imgur.com/fDf6us1.jpeg');"></div>
-  <div class="overlay"></div>
-  <div class="content">
-    <h2>RSVP</h2>
-    <a class="btn" href="https://docs.google.com/forms/d/1x2XINf9wQJ21r6U7vYC1YEbrh1A5_mSZ5OqzO4gO5aA/edit" target="_blank">
-      Confirm Attendance
-    </a>
-  </div>
-</div>
-
-<!-- GALLERY -->
-<div class="gallery">
-  <h2>Gallery</h2>
-  <img src="https://i.imgur.com/fDf6us1.jpeg">
-  <img src="https://i.imgur.com/fDf6us1.jpeg">
-  <img src="https://i.imgur.com/fDf6us1.jpeg">
+<div class="section fade">
+  <h2>RSVP</h2>
+  <a class="btn" href="https://docs.google.com/forms/d/1x2XINf9wQJ21r6U7vYC1YEbrh1A5_mSZ5OqzO4gO5aA/edit" target="_blank">
+    Confirm Attendance
+  </a>
 </div>
 
 <script>
-// FADE IN ON SCROLL
-const contents = document.querySelectorAll('.content');
+const elements = document.querySelectorAll(".fade");
 
-function showContent() {
-  contents.forEach(el => {
+function reveal() {
+  elements.forEach(el => {
     const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      el.classList.add('show');
+    if (top < window.innerHeight - 80) {
+      el.classList.add("show");
     }
   });
 }
 
-window.addEventListener('scroll', showContent);
-
-// PARALLAX EFFECT
-window.addEventListener('scroll', () => {
-  document.querySelectorAll('.bg').forEach(bg => {
-    let offset = window.pageYOffset;
-    bg.style.transform = "translateY(" + offset * 0.2 + "px)";
-  });
-});
+window.addEventListener("scroll", reveal);
+reveal();
 </script>
 
 </body>

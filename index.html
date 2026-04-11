@@ -1,149 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ezra & Gil Wedding</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ezra & Gil Wedding</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      .leaves {
-  position: fixed;
-  top: 0;
-  left: 0;
+<style>
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #f7f1e8;
+  color: #3d2b1f;
+}
+
+/* Layout */
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* HERO */
+.hero {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 38px;
+  margin: 0;
+}
+
+.hero p {
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.hero img {
   width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
+  border-radius: 20px;
+  margin-top: 20px;
 }
 
-.leaves::before {
-  content: "🍂 🍁 🍂 🍁 🍂 🍁 🍂 🍁";
-  position: absolute;
-  top: -50px;
-  left: 0;
-  width: 100%;
-  font-size: 24px;
-  animation: fall 10s linear infinite;
-  opacity: 0.6;
+/* SECTIONS */
+.section {
+  margin: 60px 0;
+  text-align: center;
 }
 
-@keyframes fall {
-  0% { transform: translateY(-10%); }
-  100% { transform: translateY(110%); }
+.section h2 {
+  margin-bottom: 10px;
 }
-    }
 
-    body {
-      margin: 0;
-      font-family: Georgia, serif;
-      background: linear-gradient(to bottom, #f6e7d7, #e7c8a2);
-      color: #4a3324;
-      text-align: center;
-      <div class="leaves"></div>
-    }
+/* BUTTON */
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #5a3d2b;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-top: 10px;
+}
 
-    .container {
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
-    }
+/* TIMELINE STYLE */
+.timeline p {
+  margin: 8px 0;
+}
 
-    .card {
-      background: rgba(255, 255, 255, 0.9);
-      margin: 15px 0;
-      padding: 18px;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    h1 {
-      font-size: 26px;
-      margin: 10px 0;
-      line-height: 1.3;
-    }
-
-    .subtitle {
-      font-style: italic;
-      margin-bottom: 10px;
-    }
-
-    img {
-      width: 100%;
-      max-width: 320px;
-      border-radius: 12px;
-      margin-top: 10px;
-    }
-
-    p {
-      margin: 6px 0;
-      font-size: 15px;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 12px 18px;
-      background: #7a4e2d;
-      color: white;
-      text-decoration: none;
-      border-radius: 25px;
-      font-size: 14px;
-    }
-
-    .btn:active {
-      transform: scale(0.98);
-    }
-
-    .footer {
-      font-size: 12px;
-      opacity: 0.7;
-      margin: 20px 0;
-    }
-  </style>
+/* MOBILE */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-  <!-- HEADER -->
-  <div class="card">
+  <!-- HERO -->
+  <div class="hero">
     <h1>Ezra May Asa<br>&<br>Gil Jun Anthony Garan</h1>
-    <p class="subtitle">are getting married 💍</p>
+    <p>August 8, 2026 • Bohol Tropics</p>
+
     <img src="https://imgur.com/a/gUUKzpg" alt="Couple Photo">
   </div>
 
+  <!-- WELCOME -->
+  <div class="section">
+    <h2>The Wedding</h2>
+    <p>With joyful hearts, we invite you to celebrate our special day with us.</p>
+  </div>
+
   <!-- DETAILS -->
-  <div class="card">
-    <p><strong>📅 August 8, 2026</strong></p>
-    <p>📍 Bohol Tropics</p>
-    <p>We would be honored to celebrate with you</p>
+  <div class="section">
+    <h2>📍 Event Details</h2>
+    <p><strong>Date:</strong> August 8, 2026</p>
+    <p><strong>Venue:</strong> Bohol Tropics</p>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section timeline">
+    <h2>📅 Wedding Timeline</h2>
+    <p>2:00 PM – Guest Arrival</p>
+    <p>3:00 PM – Ceremony</p>
+    <p>5:00 PM – Reception Dinner</p>
+    <p>7:00 PM – Celebration Party</p>
   </div>
 
   <!-- MAP -->
-  <div class="card">
-    <h3>📍 Location</h3>
+  <div class="section">
+    <h2>📍 Location</h2>
     <a class="btn"
-       href="https://maps.app.goo.gl/CZn8MjSbFbxwbaR57"
+       href="https://www.google.com/maps/search/?api=1&query=Bohol+Tropics"
        target="_blank">
       Open Google Maps
     </a>
   </div>
 
   <!-- RSVP -->
-  <div class="card">
-    <h3>📝 RSVP</h3>
-    <a class="btn" href="https://docs.google.com/forms/d/1x2XINf9wQJ21r6U7vYC1YEbrh1A5_mSZ5OqzO4gO5aA/edit" target="_blank">
+  <div class="section">
+    <h2>📝 RSVP</h2>
+    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">
       Confirm Attendance
     </a>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    Vintage • Fall Wedding 🍂
   </div>
 
 </div>

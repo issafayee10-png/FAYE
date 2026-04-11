@@ -6,23 +6,47 @@
 <title>Ezra & Gil Wedding</title>
 
 <style>
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Georgia, serif;
   background: #f7f1e8;
   color: #3d2b1f;
+  overflow-x: hidden;
 }
 
-/* Layout */
+/* FLOATING LEAVES */
+.leaf {
+  position: fixed;
+  top: -50px;
+  font-size: 20px;
+  opacity: 0.7;
+  animation: fall linear infinite;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) translateX(0);
+  }
+  100% {
+    transform: translateY(110vh) translateX(40px);
+  }
+}
+
+/* LAYOUT */
 .container {
-  max-width: 700px;
+  max-width: 800px;
   margin: auto;
   padding: 20px;
 }
 
 /* HERO */
 .hero {
-  height: 90vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,13 +54,12 @@ body {
 }
 
 .hero h1 {
-  font-size: 38px;
+  font-size: 40px;
   margin: 0;
 }
 
 .hero p {
   font-style: italic;
-  margin-top: 10px;
 }
 
 .hero img {
@@ -47,12 +70,8 @@ body {
 
 /* SECTIONS */
 .section {
-  margin: 60px 0;
+  padding: 80px 0;
   text-align: center;
-}
-
-.section h2 {
-  margin-bottom: 10px;
 }
 
 /* BUTTON */
@@ -66,9 +85,18 @@ body {
   margin-top: 10px;
 }
 
-/* TIMELINE STYLE */
-.timeline p {
-  margin: 8px 0;
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
 /* MOBILE */
@@ -76,11 +104,30 @@ body {
   .hero h1 {
     font-size: 28px;
   }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
 
 <body>
+
+<!-- FLOATING LEAVES -->
+<script>
+const leaves = ["🍂","🍁"];
+
+for (let i = 0; i < 12; i++) {
+  let leaf = document.createElement("div");
+  leaf.className = "leaf";
+  leaf.innerHTML = leaves[Math.floor(Math.random()*leaves.length)];
+  leaf.style.left = Math.random()*100 + "vw";
+  leaf.style.animationDuration = (5 + Math.random()*5) + "s";
+  leaf.style.fontSize = (16 + Math.random()*20) + "px";
+  document.body.appendChild(leaf);
+}
+</script>
 
 <div class="container">
 
@@ -92,31 +139,43 @@ body {
     <img src="https://imgur.com/a/f7VZjoP" alt="Couple Photo">
   </div>
 
-  <!-- WELCOME -->
+  <!-- STORY -->
   <div class="section">
-    <h2>The Wedding</h2>
-    <p>With joyful hearts, we invite you to celebrate our special day with us.</p>
+    <h2>Our Story</h2>
+    <p>A journey of love, patience, and becoming one.</p>
   </div>
 
   <!-- DETAILS -->
   <div class="section">
-    <h2>📍 Event Details</h2>
-    <p><strong>Date:</strong> August 8, 2026</p>
-    <p><strong>Venue:</strong> Bohol Tropics</p>
+    <h2>Wedding Details</h2>
+    <p>📅 August 8, 2026</p>
+    <p>📍 Bohol Tropics</p>
   </div>
 
   <!-- TIMELINE -->
-  <div class="section timeline">
-    <h2>📅 Wedding Timeline</h2>
+  <div class="section">
+    <h2>Timeline</h2>
     <p>2:00 PM – Guest Arrival</p>
     <p>3:00 PM – Ceremony</p>
-    <p>5:00 PM – Reception Dinner</p>
-    <p>7:00 PM – Celebration Party</p>
+    <p>5:00 PM – Dinner</p>
+    <p>7:00 PM – Party</p>
+  </div>
+
+  <!-- FULL SCREEN GALLERY -->
+  <div class="section">
+    <h2>Gallery</h2>
+
+    <div class="gallery">
+      <img src="https://imgur.com/a/f7VZjoP">
+      <img src="https://imgur.com/a/f7VZjoP">
+      <img src="https://imgur.com/a/f7VZjoP">
+      <img src="https://imgur.com/a/f7VZjoP">
+    </div>
   </div>
 
   <!-- MAP -->
   <div class="section">
-    <h2>📍 Location</h2>
+    <h2>Location</h2>
     <a class="btn"
        href="https://www.google.com/maps/search/?api=1&query=Bohol+Tropics"
        target="_blank">
@@ -126,8 +185,8 @@ body {
 
   <!-- RSVP -->
   <div class="section">
-    <h2>📝 RSVP</h2>
-    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">
+    <h2>RSVP</h2>
+    <a class="btn" href="https://docs.google.com/forms/d/1x2XINf9wQJ21r6U7vYC1YEbrh1A5_mSZ5OqzO4gO5aA/edit" target="_blank">
       Confirm Attendance
     </a>
   </div>

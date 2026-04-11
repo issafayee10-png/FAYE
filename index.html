@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ezra & Gil Wedding</title>
 
 <style>
@@ -12,186 +13,206 @@ html {
 
 body {
   margin: 0;
-  font-family: Georgia, serif;
-  background: #f7f1e8;
-  color: #3d2b1f;
+  font-family: 'Georgia', serif;
+  color: white;
   overflow-x: hidden;
 }
 
-/* FLOATING LEAVES */
-.leaf {
-  position: fixed;
-  top: -50px;
-  font-size: 20px;
-  opacity: 0.7;
-  animation: fall linear infinite;
-  pointer-events: none;
-}
-
-@keyframes fall {
-  0% {
-    transform: translateY(-10vh) translateX(0);
-  }
-  100% {
-    transform: translateY(110vh) translateX(40px);
-  }
-}
-
-/* LAYOUT */
-.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-}
-
-/* HERO */
-.hero {
+/* SECTION BASE */
+.section {
+  position: relative;
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
-.hero h1 {
-  font-size: 40px;
+/* BACKGROUND IMAGE */
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transform: translateY(0);
+}
+
+/* DARK OVERLAY */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35);
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* TEXT */
+.content {
+  max-width: 80%;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.content.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h1 {
+  font-size: 42px;
   margin: 0;
 }
 
-.hero p {
-  font-style: italic;
+h2 {
+  font-size: 28px;
 }
 
-.hero img {
-  width: 100%;
-  border-radius: 20px;
-  margin-top: 20px;
-}
-
-/* SECTIONS */
-.section {
-  padding: 80px 0;
-  text-align: center;
+p {
+  font-size: 16px;
 }
 
 /* BUTTON */
 .btn {
   display: inline-block;
+  margin-top: 15px;
   padding: 12px 22px;
-  background: #5a3d2b;
-  color: white;
+  background: rgba(255,255,255,0.9);
+  color: black;
   border-radius: 30px;
   text-decoration: none;
-  margin-top: 10px;
+  font-size: 14px;
 }
 
 /* GALLERY */
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  background: #f7f1e8;
+  color: #3d2b1f;
+  padding: 40px 20px;
 }
 
 .gallery img {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 15px;
+  margin-bottom: 10px;
+  border-radius: 12px;
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
-  .hero h1 {
-    font-size: 28px;
-  }
-
-  .gallery {
-    grid-template-columns: 1fr;
-  }
+  h1 { font-size: 28px; }
+  h2 { font-size: 22px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- FLOATING LEAVES -->
-<script>
-const leaves = ["🍂","🍁"];
-
-for (let i = 0; i < 12; i++) {
-  let leaf = document.createElement("div");
-  leaf.className = "leaf";
-  leaf.innerHTML = leaves[Math.floor(Math.random()*leaves.length)];
-  leaf.style.left = Math.random()*100 + "vw";
-  leaf.style.animationDuration = (5 + Math.random()*5) + "s";
-  leaf.style.fontSize = (16 + Math.random()*20) + "px";
-  document.body.appendChild(leaf);
-}
-</script>
-
-<div class="container">
-
-  <!-- HERO -->
-  <div class="hero">
+<!-- HERO -->
+<div class="section">
+  <div class="bg" style="background-image: url('https://i.imgur.com/fDf6us1.jpeg');"></div>
+  <div class="overlay"></div>
+  <div class="content">
     <h1>Ezra May Asa<br>&<br>Gil Jun Anthony Garan</h1>
     <p>August 8, 2026 • Bohol Tropics</p>
-
-    <img src="https://i.imgur.com/fDf6us1.jpeg" alt="Couple Photo">
   </div>
+</div>
 
-  <!-- STORY -->
-  <div class="section">
+<!-- STORY -->
+<div class="section">
+  <div class="bg" style="background-image: url('https://i.imgur.com/fDf6us1.jpeg');"></div>
+  <div class="overlay"></div>
+  <div class="content">
     <h2>Our Story</h2>
     <p>A journey of love, patience, and becoming one.</p>
   </div>
+</div>
 
-  <!-- DETAILS -->
-  <div class="section">
-    <h2>Wedding Details</h2>
-    <p>📅 August 8, 2026</p>
-    <p>📍 Bohol Tropics</p>
+<!-- DETAILS -->
+<div class="section">
+  <div class="bg" style="background-image: url('https://i.imgur.com/fDf6us1.jpeg');"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <h2>Wedding Day</h2>
+    <p>August 8, 2026</p>
+    <p>Bohol Tropics</p>
   </div>
+</div>
 
-  <!-- TIMELINE -->
-  <div class="section">
+<!-- TIMELINE -->
+<div class="section">
+  <div class="bg" style="background-image: url('https://i.imgur.com/fDf6us1.jpeg');"></div>
+  <div class="overlay"></div>
+  <div class="content">
     <h2>Timeline</h2>
-    <p>2:00 PM – Guest Arrival</p>
+    <p>2:00 PM – Arrival</p>
     <p>3:00 PM – Ceremony</p>
-    <p>5:00 PM – Dinner</p>
-    <p>7:00 PM – Party</p>
+    <p>5:00 PM – Reception</p>
   </div>
+</div>
 
-  <!-- FULL SCREEN GALLERY -->
-  <div class="section">
-    <h2>Gallery</h2>
-
-    <div class="gallery">
-      <img src="https://i.imgur.com/fDf6us1.jpeg">
-      <img src="https://i.imgur.com/fDf6us1.jpeg">
-      <img src="https://i.imgur.com/fDf6us1.jpeg">
-      <img src="https://i.imgur.com/fDf6us1.jpeg">
-    </div>
-  </div>
-
-  <!-- MAP -->
-  <div class="section">
+<!-- MAP -->
+<div class="section">
+  <div class="bg" style="background-image: url('https://i.imgur.com/fDf6us1.jpeg');"></div>
+  <div class="overlay"></div>
+  <div class="content">
     <h2>Location</h2>
     <a class="btn"
        href="https://www.google.com/maps/search/?api=1&query=Bohol+Tropics"
        target="_blank">
-      Open Google Maps
+       View Map
     </a>
   </div>
+</div>
 
-  <!-- RSVP -->
-  <div class="section">
+<!-- RSVP -->
+<div class="section">
+  <div class="bg" style="background-image: url('https://i.imgur.com/fDf6us1.jpeg');"></div>
+  <div class="overlay"></div>
+  <div class="content">
     <h2>RSVP</h2>
     <a class="btn" href="https://docs.google.com/forms/d/1x2XINf9wQJ21r6U7vYC1YEbrh1A5_mSZ5OqzO4gO5aA/edit" target="_blank">
       Confirm Attendance
     </a>
   </div>
-
 </div>
+
+<!-- GALLERY -->
+<div class="gallery">
+  <h2>Gallery</h2>
+  <img src="https://i.imgur.com/fDf6us1.jpeg">
+  <img src="https://i.imgur.com/fDf6us1.jpeg">
+  <img src="https://i.imgur.com/fDf6us1.jpeg">
+</div>
+
+<script>
+// FADE IN ON SCROLL
+const contents = document.querySelectorAll('.content');
+
+function showContent() {
+  contents.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add('show');
+    }
+  });
+}
+
+window.addEventListener('scroll', showContent);
+
+// PARALLAX EFFECT
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('.bg').forEach(bg => {
+    let offset = window.pageYOffset;
+    bg.style.transform = "translateY(" + offset * 0.2 + "px)";
+  });
+});
+</script>
 
 </body>
 </html>

@@ -16,73 +16,68 @@ body {
   font-family: "Georgia", serif;
   background: #f6f1e8;
   color: #2f241d;
+  overflow-x: hidden;
 }
 
 /* HERO */
 .hero {
+  position: relative;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-}
-
-.hero-inner {
-  max-width: 700px;
-}
-
-.hero h1 {
-  font-size: 44px;
-  font-weight: 400;
-  margin: 0;
-  letter-spacing: 1px;
-}
-
-.hero p {
-  font-style: italic;
-  margin-top: 10px;
-  opacity: 0.8;
+  overflow: hidden;
 }
 
 .hero img {
   width: 100%;
-  margin-top: 25px;
-  border-radius: 18px;
+  height: 100%;
+  object-fit: cover;
+  animation: zoomHero 12s ease-in-out infinite alternate;
 }
 
-/* SECTION */
+@keyframes zoomHero {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+/* GLASS OVERLAY */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.hero-overlay h1 {
+  font-size: 42px;
+  margin: 0;
+}
+
+.hero-overlay p {
+  font-style: italic;
+}
+
+/* SECTIONS */
 .section {
   max-width: 750px;
-  margin: 0 auto;
-  padding: 90px 25px;
+  margin: auto;
+  padding: 100px 25px;
   text-align: center;
 }
 
-.section h2 {
-  font-size: 26px;
-  font-weight: 400;
-  margin-bottom: 10px;
-}
-
-.section p {
-  font-size: 16px;
-  line-height: 1.8;
-  opacity: 0.9;
-}
-
-/* TIMELINE */
-.timeline {
-  margin-top: 20px;
-  line-height: 2;
-}
-
-/* FULL WIDTH IMAGE BLOCK */
+/* IMAGE BREAK */
 .image-block {
-  width: 100%;
-  height: 70vh;
+  height: 80vh;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 }
 
 /* BUTTON */
@@ -94,14 +89,13 @@ body {
   background: #3b2a22;
   color: white;
   text-decoration: none;
-  font-size: 14px;
 }
 
-/* FADE IN */
+/* FADE ANIMATION */
 .fade {
   opacity: 0;
-  transform: translateY(25px);
-  transition: all 1s ease;
+  transform: translateY(40px);
+  transition: all 1.2s ease;
 }
 
 .fade.show {
@@ -109,10 +103,30 @@ body {
   transform: translateY(0);
 }
 
+/* PARTICLES */
+.particle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 10s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
 /* MOBILE */
 @media (max-width: 600px) {
-  .hero h1 {
-    font-size: 30px;
+  .hero-overlay h1 {
+    font-size: 28px;
   }
 }
 </style>
@@ -121,20 +135,21 @@ body {
 <body>
 
 <!-- HERO -->
-<div class="hero fade">
-  <div class="hero-inner">
-    <h1>Ezra May Asa<br>&<br>Gil Jun Anthony Garan</h1>
-    <p>August 8, 2026 • Bohol Tropics</p>
-    <img src="https://i.imgur.com/fDf6us1.jpeg">
+<div class="hero">
+  <img src="https://i.imgur.com/fDf6us1.jpeg">
+
+  <div class="hero-overlay">
+    <div>
+      <h1>Ezra May Asa<br>&<br>Gil Jun Anthony Garan</h1>
+      <p>August 8, 2026 • Bohol Tropics</p>
+    </div>
   </div>
 </div>
 
 <!-- STORY -->
 <div class="section fade">
   <h2>Our Story</h2>
-  <p>
-    A quiet beginning, a growing love, and a lifetime we choose every day.
-  </p>
+  <p>A journey of love, patience, and becoming one.</p>
 </div>
 
 <!-- IMAGE BREAK -->
@@ -147,19 +162,16 @@ body {
   <p>Bohol Tropics</p>
 </div>
 
+<!-- IMAGE BREAK -->
+<div class="image-block" style="background-image:url('https://i.imgur.com/c3xIJO0.jpeg')"></div>
+
 <!-- TIMELINE -->
 <div class="section fade">
   <h2>Timeline</h2>
-  <div class="timeline">
-    <p>2:00 PM — Guest Arrival</p>
-    <p>3:00 PM — Ceremony</p>
-    <p>5:00 PM — Reception</p>
-    <p>7:00 PM — Celebration</p>
-  </div>
+  <p>2:00 PM – Arrival</p>
+  <p>3:00 PM – Ceremony</p>
+  <p>5:00 PM – Reception</p>
 </div>
-
-<!-- IMAGE BREAK -->
-<div class="image-block" style="background-image:url('https://i.imgur.com/c3xIJO0.jpeg')"></div>
 
 <!-- MAP -->
 <div class="section fade">
@@ -174,12 +186,13 @@ body {
 <!-- RSVP -->
 <div class="section fade">
   <h2>RSVP</h2>
-  <a class="btn" href="https://docs.google.com/forms/d/1x2XINf9wQJ21r6U7vYC1YEbrh1A5_mSZ5OqzO4gO5aA/edit" target="_blank">
+  <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">
     Confirm Attendance
   </a>
 </div>
 
 <script>
+// FADE
 const elements = document.querySelectorAll(".fade");
 
 function reveal() {
@@ -193,6 +206,16 @@ function reveal() {
 
 window.addEventListener("scroll", reveal);
 reveal();
+
+// PARTICLES
+for (let i = 0; i < 25; i++) {
+  let p = document.createElement("div");
+  p.className = "particle";
+  p.style.left = Math.random() * 100 + "vw";
+  p.style.animationDuration = (5 + Math.random() * 5) + "s";
+  p.style.opacity = Math.random();
+  document.body.appendChild(p);
+}
 </script>
 
 </body>

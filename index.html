@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ezra & Gil | Cinematic Wedding Film</title>
+<title>Ezra & Gil | Luxury Wedding Invitation</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
-    --bg:#f6ddc7;
+    --bg:#f7e1cc;
     --text:#3a2a22;
     --accent:#c06a3d;
-    --card:rgba(255,255,255,0.72);
+    --accent2:#a85a33;
+    --card:rgba(255,255,255,0.78);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -21,7 +22,7 @@ html{scroll-behavior:smooth;}
 
 body{
     font-family:'Montserrat',sans-serif;
-    background:linear-gradient(180deg,#f6ddc7,#f3d2bb);
+    background:linear-gradient(180deg,#f7e1cc,#f3d6be);
     color:var(--text);
     overflow-x:hidden;
 }
@@ -36,97 +37,98 @@ body::before{
     z-index:999;
 }
 
-h1,h2{font-family:'Playfair Display',serif;letter-spacing:0.3px;}
+h1,h2{font-family:'Playfair Display',serif;}
 
-/* CINEMATIC SECTIONS */
-.scene{
-    min-height:100vh;
+/* HERO */
+.hero{
+    height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:60px 18px;
     position:relative;
-}
-
-/* HERO */
-.hero{
     background:
-        linear-gradient(to top, rgba(30,15,10,0.72), rgba(0,0,0,0.2)),
+        linear-gradient(to top, rgba(40,20,10,0.75), rgba(0,0,0,0.2)),
         url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
     color:#fff;
 }
 
 .hero h1{
     font-family:'Great Vibes',cursive;
-    font-size:74px;
-    text-shadow:0 10px 30px rgba(0,0,0,0.3);
+    font-size:72px;
 }
 
 .hero p{opacity:0.9;}
 
+/* SECTIONS (NO HIDDEN BUGS) */
+section{
+    max-width:900px;
+    margin:auto;
+    padding:70px 18px;
+    text-align:center;
+}
+
+h2{
+    font-size:26px;
+    margin-bottom:16px;
+    color:var(--accent);
+}
+
 /* CARD */
 .card{
     background:var(--card);
-    padding:24px;
-    border-radius:20px;
-    backdrop-filter:blur(12px);
-    box-shadow:0 18px 40px rgba(0,0,0,0.10);
-    max-width:720px;
-    width:100%;
+    padding:22px;
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    backdrop-filter:blur(10px);
 }
 
-/* COUNTDOWN LUXURY */
+/* COUNTDOWN (ALWAYS VISIBLE FIXED) */
 .countdown{
     display:flex;
-    gap:14px;
     justify-content:center;
+    gap:10px;
     flex-wrap:wrap;
 }
+
 .countdown div{
     min-width:60px;
 }
+
 .countdown h3{
+    font-size:16px;
     color:var(--accent);
-    font-size:18px;
 }
+
 .countdown p{
     font-size:10px;
     opacity:0.7;
-    letter-spacing:1px;
 }
 
-/* SLIDESHOW PREMIUM */
+/* SLIDESHOW SAFE */
 .slideshow{
-    position:relative;
-    width:100%;
     max-width:720px;
-    height:420px;
+    margin:auto;
+    border-radius:18px;
     overflow:hidden;
-    border-radius:22px;
-    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+    position:relative;
 }
 
 .slide{
-    position:absolute;
-    inset:0;
-    opacity:0;
-    transition:opacity 1.6s ease;
+    display:none;
 }
 
 .slide img{
     width:100%;
-    height:100%;
-    object-fit:cover;
-    transform:scale(1.05);
+    display:block;
 }
 
-/* MAP PREMIUM */
+/* MAP SAFE */
 .map iframe{
     width:100%;
-    height:240px;
+    height:260px;
     border:0;
-    border-radius:18px;
+    border-radius:16px;
 }
 
 /* MUSIC BUTTON */
@@ -141,10 +143,9 @@ h1,h2{font-family:'Playfair Display',serif;letter-spacing:0.3px;}
     border-radius:30px;
     z-index:9999;
     font-size:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* PETALS */
+/* PETALS LIGHT */
 .petal{
     position:fixed;
     top:-10px;
@@ -153,29 +154,18 @@ h1,h2{font-family:'Playfair Display',serif;letter-spacing:0.3px;}
     background:rgba(255,210,180,0.7);
     border-radius:50%;
     animation:fall linear infinite;
+    pointer-events:none;
 }
 
 @keyframes fall{
     0%{transform:translateY(-10vh);opacity:0;}
     10%{opacity:1;}
-    100%{transform:translateY(110vh) translateX(25px);opacity:0;}
-}
-
-/* FADE IN */
-.fade{
-    animation:fadeUp 1.2s ease both;
-}
-
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(18px);}
-    to{opacity:1;transform:translateY(0);}
+    100%{transform:translateY(110vh) translateX(30px);opacity:0;}
 }
 
 /* MOBILE */
 @media(max-width:768px){
-    .hero h1{font-size:44px;}
-    .slideshow{height:280px;}
-    .card{padding:18px;}
+    .hero h1{font-size:42px;}
 }
 
 </style>
@@ -183,8 +173,15 @@ h1,h2{font-family:'Playfair Display',serif;letter-spacing:0.3px;}
 
 <body>
 
+<!-- MUSIC (FIXED AUTOPLAY BLOCK SAFE) -->
+<audio id="music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1f3b2c6.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+
 <!-- HERO -->
-<section class="scene hero fade">
+<section class="hero">
     <div>
         <h1>Ezra & Gil</h1>
         <p>We’re getting married</p>
@@ -193,15 +190,14 @@ h1,h2{font-family:'Playfair Display',serif;letter-spacing:0.3px;}
 </section>
 
 <!-- STORY -->
-<section class="scene fade">
-    <div class="card">
-        <h2>Our Story</h2>
-        <p>A love story written softly through time, moments, and grace.</p>
-    </div>
+<section>
+    <h2>Our Story</h2>
+    <div class="card">A love written softly through time.</div>
 </section>
 
 <!-- SLIDESHOW -->
-<section class="scene fade">
+<section>
+    <h2>Moments</h2>
     <div class="slideshow">
         <div class="slide"><img src="https://i.imgur.com/HgBD7Mz.jpeg"></div>
         <div class="slide"><img src="https://i.imgur.com/kZ9Y1kr.jpeg"></div>
@@ -210,27 +206,44 @@ h1,h2{font-family:'Playfair Display',serif;letter-spacing:0.3px;}
 </section>
 
 <!-- DETAILS -->
-<section class="scene fade">
+<section>
+    <h2>Wedding Details</h2>
     <div class="card">
-        <h2>Wedding Details</h2>
         <p><strong>Date:</strong> August 8, 2026</p>
         <p><strong>Time:</strong> 3:00 PM</p>
         <p><strong>Venue:</strong> Maribojoc Church, Bohol</p>
     </div>
 </section>
 
-<!-- MAP -->
-<section class="scene fade">
-    <div class="card">
-        <h2>Location</h2>
+<!-- MAP (FIXED SAFE EMBED) -->
+<section>
+    <h2>Location</h2>
+    <div class="card map">
         <iframe 
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa4ba8d05c451f%3A0xb2970777a443c5a6!2sMaribojoc%20Church%20(Holy%20Cross%20Parish)!5e0!3m2!1sen!2sph!4v1776604955397!5m2!1sen!2sph"
         loading="lazy"></iframe>
     </div>
 </section>
 
-<!-- COUNTDOWN -->
-<section class="scene fade">
+<!-- QR -->
+<section>
+    <h2>Capture the Love</h2>
+    <div class="card">
+        <img src="https://i.imgur.com/AnVOf83.jpeg" width="160" style="border-radius:12px;">
+    </div>
+</section>
+
+<!-- RSVP -->
+<section>
+    <h2>RSVP</h2>
+    <div class="card">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">Click here to RSVP</a>
+    </div>
+</section>
+
+<!-- COUNTDOWN (FIXED ALWAYS VISIBLE) -->
+<section>
+    <h2>Countdown to Forever 💍</h2>
     <div class="card countdown">
         <div><h3 id="days">0</h3><p>Days</p></div>
         <div><h3 id="hours">0</h3><p>Hrs</p></div>
@@ -239,49 +252,52 @@ h1,h2{font-family:'Playfair Display',serif;letter-spacing:0.3px;}
     </div>
 </section>
 
-<!-- MUSIC -->
-<audio id="music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1f3b2c6.mp3" type="audio/mpeg">
-</audio>
-
-<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
-
 <script>
+// MUSIC SAFE (USER INTERACTION REQUIRED)
 function toggleMusic(){
-    let m=document.getElementById('music');
-    if(m.paused)m.play(); else m.pause();
+    let m=document.getElementById("music");
+    if(m.paused){
+        m.volume=0;
+        m.play();
+        let f=setInterval(()=>{
+            if(m.volume<0.5)m.volume+=0.05;
+            else clearInterval(f);
+        },200);
+    }else{
+        m.pause();
+    }
 }
 
-// countdown
+// COUNTDOWN
 const wedding=new Date("August 8, 2026 15:00:00").getTime();
 setInterval(()=>{
     let now=new Date().getTime();
     let d=wedding-now;
     let day=86400000,h=3600000,m=60000,s=1000;
 
-    document.getElementById("days").innerText=Math.floor(d/day);
-    document.getElementById("hours").innerText=Math.floor((d%day)/h);
-    document.getElementById("minutes").innerText=Math.floor((d%h)/m);
-    document.getElementById("seconds").innerText=Math.floor((d%m)/s);
+    document.getElementById("days").innerText=Math.max(0,Math.floor(d/day));
+    document.getElementById("hours").innerText=Math.max(0,Math.floor((d%day)/h));
+    document.getElementById("minutes").innerText=Math.max(0,Math.floor((d%h)/m));
+    document.getElementById("seconds").innerText=Math.max(0,Math.floor((d%m)/s));
 },1000);
 
-// slideshow
+// SLIDESHOW SAFE
 let i=0;
 function show(){
-    let slides=document.querySelectorAll('.slide');
-    slides.forEach(s=>s.style.opacity=0);
+    let slides=document.querySelectorAll(".slide");
+    slides.forEach(s=>s.style.display="none");
     i++; if(i>slides.length)i=1;
-    slides[i-1].style.opacity=1;
-    setTimeout(show,4200);
+    slides[i-1].style.display="block";
+    setTimeout(show,3500);
 }
 show();
 
-// petals
-for(let i=0;i<28;i++){
-    let p=document.createElement('div');
-    p.className='petal';
-    p.style.left=Math.random()*100+'vw';
-    p.style.animationDuration=(5+Math.random()*5)+'s';
+// PETALS
+for(let i=0;i<30;i++){
+    let p=document.createElement("div");
+    p.className="petal";
+    p.style.left=Math.random()*100+"vw";
+    p.style.animationDuration=(5+Math.random()*5)+"s";
     document.body.appendChild(p);
 }
 </script>

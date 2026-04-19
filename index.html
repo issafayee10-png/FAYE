@@ -6,15 +6,14 @@
 
 <title>Ezra & Gil Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
   font-family: 'Playfair Display', serif;
-  background: #eae1d5;
+  background: #e7ddd0;
   color: #3b2a22;
-  overflow-x: hidden;
 }
 
 /* BACKGROUND */
@@ -22,7 +21,7 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: url('https://i.imgur.com/fDf6us1.jpeg') center/cover no-repeat;
+  background: url('https://i.imgur.com/vi97Vbc.jpeg') center/cover no-repeat;
   filter: blur(3px) brightness(0.85);
   z-index: -2;
 }
@@ -35,83 +34,78 @@ body {
   z-index: -1;
 }
 
-/* HERO TEXT */
+/* HERO */
 .hero {
   text-align: center;
-  padding: 70px 20px 30px;
-}
-
-.hero small {
-  letter-spacing: 3px;
-  font-size: 12px;
+  padding: 60px 20px;
 }
 
 .hero h1 {
   font-family: 'Great Vibes', cursive;
-  font-size: 52px;
+  font-size: 60px;
   margin: 10px 0;
 }
 
 .hero p {
-  font-size: 14px;
+  letter-spacing: 2px;
+  font-size: 13px;
 }
 
-/* COLLAGE AREA */
-.canvas {
+/* STACKED CANVAS SECTIONS */
+.section {
   position: relative;
-  height: 1600px;
+  margin: 60px auto;
+  width: 85%;
+  max-width: 900px;
 }
 
-/* CARDS */
-.card {
-  position: absolute;
+/* MAIN PANEL */
+.panel {
   background: #f8f1e8;
-  padding: 12px;
-  border-radius: 10px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-  width: 220px;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
-.card img {
+/* FLOATING IMAGE */
+.float-img {
+  position: absolute;
+  width: 160px;
+  top: -40px;
+  left: -40px;
+  transform: rotate(-6deg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.float-img img {
   width: 100%;
   border-radius: 8px;
 }
 
-.card p {
-  font-size: 12px;
-  margin-top: 8px;
+/* SECOND FLOAT */
+.float-img2 {
+  position: absolute;
+  width: 160px;
+  bottom: -40px;
+  right: -40px;
+  transform: rotate(6deg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
-
-/* POSITIONS (adjustable) */
-.card1 { top: 80px; left: 8%; transform: rotate(-4deg); }
-.card2 { top: 250px; right: 10%; transform: rotate(3deg); }
-.card3 { top: 520px; left: 20%; transform: rotate(-2deg); }
-.card4 { top: 850px; right: 15%; transform: rotate(2deg); }
 
 /* CENTER FRAME */
 .frame {
-  position: absolute;
-  top: 700px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 40px auto;
   background: #fffaf4;
-  padding: 35px;
+  padding: 30px;
   border-radius: 25px;
-  text-align: center;
   width: 260px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-  border: 1px solid #e5d8c7;
 }
 
 .frame h3 {
   font-family: 'Great Vibes', cursive;
   font-size: 26px;
-  margin-bottom: 10px;
-}
-
-.frame p {
-  font-size: 14px;
-  margin: 5px 0;
 }
 
 /* BUTTON */
@@ -123,42 +117,20 @@ body {
   color: white;
   border-radius: 20px;
   text-decoration: none;
-  font-size: 13px;
-}
-
-/* LOCATION CARD */
-.location {
-  position: absolute;
-  bottom: 120px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #f8f1e8;
-  padding: 20px;
-  border-radius: 12px;
-  width: 260px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.location h4 {
-  margin: 5px 0;
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
-  .canvas {
-    height: auto;
+  .float-img, .float-img2 {
+    display: none;
   }
 
-  .card, .frame, .location {
-    position: static;
-    margin: 20px auto;
-    transform: none !important;
-    width: 90%;
+  .panel {
+    padding: 25px;
   }
 
   .hero h1 {
-    font-size: 36px;
+    font-size: 40px;
   }
 }
 </style>
@@ -171,55 +143,69 @@ body {
 
 <!-- HERO -->
 <div class="hero">
-  <small>WE INVITE YOU</small>
+  <p>WE INVITE YOU</p>
   <h1>Ezra May Asa & Gil Jun Anthony Garan</h1>
   <p>August 8, 2026 • Bohol Tropics</p>
 </div>
 
-<!-- COLLAGE -->
-<div class="canvas">
+<!-- STORY SECTION -->
+<div class="section">
 
-  <div class="card card1">
+  <div class="float-img">
+    <img src="https://i.imgur.com/fDf6us1.jpeg">
+  </div>
+
+  <div class="panel">
+    <h2>Our Story</h2>
+    <p>
+      A journey of love, patience, and choosing each other every day.
+    </p>
+  </div>
+
+  <div class="float-img2">
     <img src="https://i.imgur.com/OscEMZZ.jpeg">
-    <p>The Beginning</p>
   </div>
 
-  <div class="card card2">
-    <img src="https://i.imgur.com/c3xIJO0.jpeg">
-    <p>The Journey</p>
+</div>
+
+<!-- TIMELINE SECTION -->
+<div class="section">
+
+  <div class="panel">
+    <div class="frame">
+      <h3>Order of Events</h3>
+      <p>2:00 PM – Arrival</p>
+      <p>3:00 PM – Ceremony</p>
+      <p>5:00 PM – Reception</p>
+    </div>
   </div>
 
-  <div class="card card3">
-    <img src="https://i.imgur.com/HgBD7Mz.jpeg">
-    <p>The Promise</p>
-  </div>
+</div>
 
-  <div class="card card4">
-    <img src="https://i.imgur.com/stPpfXJ.jpeg">
-    <p>Forever</p>
-  </div>
+<!-- LOCATION -->
+<div class="section">
 
-  <!-- CENTER FRAME -->
-  <div class="frame">
-    <h3>Order of Events</h3>
-    <p>2:00 PM – Arrival</p>
-    <p>3:00 PM – Ceremony</p>
-    <p>5:00 PM – Reception</p>
-
-    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">
-      RSVP
-    </a>
-  </div>
-
-  <!-- LOCATION -->
-  <div class="location">
-    <h4>📍 Bohol Tropics</h4>
-    <p>Tagbilaran City, Bohol</p>
+  <div class="panel">
+    <h2>Location</h2>
+    <p>Bohol Tropics, Tagbilaran City</p>
 
     <a class="btn"
        href="https://www.google.com/maps/search/?api=1&query=Bohol+Tropics"
        target="_blank">
        View Map
+    </a>
+  </div>
+
+</div>
+
+<!-- RSVP -->
+<div class="section">
+
+  <div class="panel">
+    <h2>RSVP</h2>
+
+    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">
+      Confirm Attendance
     </a>
   </div>
 

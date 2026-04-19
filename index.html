@@ -6,11 +6,13 @@
 
 <title>Ezra & Gil Wedding</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap" rel="stylesheet">
+
 <style>
 body {
   margin: 0;
-  font-family: "Georgia", serif;
-  background: #e9dfd2;
+  font-family: 'Playfair Display', serif;
+  background: #eae1d5;
   color: #3b2a22;
   overflow-x: hidden;
 }
@@ -21,61 +23,70 @@ body {
   width: 100%;
   height: 100%;
   background: url('https://i.imgur.com/fDf6us1.jpeg') center/cover no-repeat;
-  filter: blur(2px) brightness(0.9);
+  filter: blur(3px) brightness(0.85);
   z-index: -2;
 }
 
-/* OVERLAY */
 .overlay {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(255, 248, 240, 0.6);
+  background: rgba(255,248,240,0.6);
   z-index: -1;
 }
 
-/* TITLE */
+/* HERO TEXT */
 .hero {
   text-align: center;
-  padding: 80px 20px 40px;
+  padding: 70px 20px 30px;
+}
+
+.hero small {
+  letter-spacing: 3px;
+  font-size: 12px;
 }
 
 .hero h1 {
-  font-size: 48px;
-  font-family: "Times New Roman", serif;
-  font-style: italic;
+  font-family: 'Great Vibes', cursive;
+  font-size: 52px;
+  margin: 10px 0;
 }
 
 .hero p {
-  letter-spacing: 2px;
   font-size: 14px;
 }
 
 /* COLLAGE AREA */
 .canvas {
   position: relative;
-  height: 1400px;
+  height: 1600px;
 }
 
-/* CARD STYLE */
+/* CARDS */
 .card {
   position: absolute;
   background: #f8f1e8;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  width: 220px;
 }
 
-/* IMAGE */
 .card img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
-/* POSITIONS (you can tweak these) */
-.card1 { top: 50px; left: 10%; width: 250px; }
-.card2 { top: 200px; right: 10%; width: 250px; }
-.card3 { top: 450px; left: 20%; width: 280px; }
+.card p {
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+/* POSITIONS (adjustable) */
+.card1 { top: 80px; left: 8%; transform: rotate(-4deg); }
+.card2 { top: 250px; right: 10%; transform: rotate(3deg); }
+.card3 { top: 520px; left: 20%; transform: rotate(-2deg); }
+.card4 { top: 850px; right: 15%; transform: rotate(2deg); }
 
 /* CENTER FRAME */
 .frame {
@@ -84,22 +95,53 @@ body {
   left: 50%;
   transform: translateX(-50%);
   background: #fffaf4;
-  padding: 30px;
-  border-radius: 20px;
+  padding: 35px;
+  border-radius: 25px;
   text-align: center;
   width: 260px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  border: 1px solid #e5d8c7;
+}
+
+.frame h3 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.frame p {
+  font-size: 14px;
+  margin: 5px 0;
 }
 
 /* BUTTON */
 .btn {
   display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
+  margin-top: 10px;
+  padding: 10px 18px;
   background: #3b2a22;
   color: white;
   border-radius: 20px;
   text-decoration: none;
+  font-size: 13px;
+}
+
+/* LOCATION CARD */
+.location {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f8f1e8;
+  padding: 20px;
+  border-radius: 12px;
+  width: 260px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.location h4 {
+  margin: 5px 0;
 }
 
 /* MOBILE */
@@ -108,11 +150,15 @@ body {
     height: auto;
   }
 
-  .card, .frame {
+  .card, .frame, .location {
     position: static;
     margin: 20px auto;
-    display: block;
+    transform: none !important;
     width: 90%;
+  }
+
+  .hero h1 {
+    font-size: 36px;
   }
 }
 </style>
@@ -125,7 +171,7 @@ body {
 
 <!-- HERO -->
 <div class="hero">
-  <p>WE INVITE YOU</p>
+  <small>WE INVITE YOU</small>
   <h1>Ezra May Asa & Gil Jun Anthony Garan</h1>
   <p>August 8, 2026 • Bohol Tropics</p>
 </div>
@@ -135,17 +181,22 @@ body {
 
   <div class="card card1">
     <img src="https://i.imgur.com/OscEMZZ.jpeg">
-    <p>Our beginning</p>
+    <p>The Beginning</p>
   </div>
 
   <div class="card card2">
     <img src="https://i.imgur.com/c3xIJO0.jpeg">
-    <p>The journey</p>
+    <p>The Journey</p>
   </div>
 
   <div class="card card3">
     <img src="https://i.imgur.com/HgBD7Mz.jpeg">
-    <p>The promise</p>
+    <p>The Promise</p>
+  </div>
+
+  <div class="card card4">
+    <img src="https://i.imgur.com/stPpfXJ.jpeg">
+    <p>Forever</p>
   </div>
 
   <!-- CENTER FRAME -->
@@ -155,10 +206,20 @@ body {
     <p>3:00 PM – Ceremony</p>
     <p>5:00 PM – Reception</p>
 
+    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">
+      RSVP
+    </a>
+  </div>
+
+  <!-- LOCATION -->
+  <div class="location">
+    <h4>📍 Bohol Tropics</h4>
+    <p>Tagbilaran City, Bohol</p>
+
     <a class="btn"
-       href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform"
+       href="https://www.google.com/maps/search/?api=1&query=Bohol+Tropics"
        target="_blank">
-       RSVP
+       View Map
     </a>
   </div>
 

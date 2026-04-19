@@ -6,123 +6,144 @@
 
 <title>Ezra & Gil Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: 'Playfair Display', serif;
-  background: #e7ddd0;
-  color: #3b2a22;
+  color: #2f241d;
+  background: #f3ece3;
   overflow-x: hidden;
-}
-
-/* LOADER */
-.loader {
-  position: fixed;
-  inset: 0;
-  background: #e7ddd0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  font-family: 'Great Vibes';
-  font-size: 32px;
 }
 
 /* HERO */
 .hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: zoom 18s ease-in-out infinite alternate;
+  filter: brightness(0.7);
+}
+
+@keyframes zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.12); }
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  padding: 80px 20px;
+  color: white;
 }
 
 .hero h1 {
-  font-family: 'Great Vibes';
-  font-size: 50px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 70px;
+  margin: 0;
 }
 
-/* SECTION */
-.section {
-  position: relative;
-  width: 85%;
-  max-width: 1000px;
-  margin: 80px auto;
-  padding: 80px 30px;
+.hero p {
+  letter-spacing: 3px;
+  font-size: 14px;
+}
+
+/* STORY CARD */
+.story-wrap {
+  margin-top: -120px;
+  display: flex;
+  justify-content: center;
+}
+
+.story-card {
+  background: #f8f1e8;
+  padding: 60px;
   border-radius: 20px;
-  background-image: var(--bg);
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
+  width: 70%;
+  text-align: center;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.2);
   opacity: 0;
   transform: translateY(40px);
   transition: 1s;
 }
 
-.section.show {
+.story-card.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-.section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(248,241,232,0.85);
+/* SPLIT SECTION */
+.split {
+  display: flex;
+  min-height: 500px;
+  margin-top: 80px;
 }
 
-/* CONTENT */
-.panel {
-  position: relative;
-  z-index: 1;
-  text-align: center;
+.split-img {
+  flex: 1;
 }
 
-/* FLOAT IMAGES */
-.float-left, .float-right {
-  position: absolute;
-  width: 140px;
-}
-
-.float-left {
-  top: -30px;
-  left: -30px;
-  transform: rotate(-6deg);
-}
-
-.float-right {
-  bottom: -30px;
-  right: -30px;
-  transform: rotate(6deg);
-}
-
-.float-left img, .float-right img {
+.split-img img {
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  height: 100%;
+  object-fit: cover;
+}
+
+.split-text {
+  flex: 1;
+  padding: 80px;
+  background: #f8f1e8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* PARALLAX IMAGE */
+.image-break {
+  height: 70vh;
+  background: url('https://i.imgur.com/iM5iOhy.jpeg') center/cover fixed;
+}
+
+/* CENTER SECTION */
+.center {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+/* RSVP */
+.rsvp {
+  text-align: center;
+  padding: 120px 20px;
+  background: #3b2a22;
+  color: white;
 }
 
 /* BUTTON */
 .btn {
   display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: #3b2a22;
-  color: white;
-  border-radius: 20px;
+  margin-top: 20px;
+  padding: 12px 25px;
+  border-radius: 30px;
+  background: white;
+  color: #3b2a22;
+  text-decoration: none;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-/* GALLERY */
-.gallery {
-  display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  padding: 10px;
-}
-
-.gallery img {
-  height: 200px;
-  border-radius: 12px;
+.btn:hover {
+  transform: translateY(-3px);
 }
 
 /* MODAL */
@@ -137,84 +158,99 @@ body {
 
 .modal-content {
   background: #fffaf4;
-  padding: 20px;
+  padding: 30px;
   border-radius: 12px;
   width: 300px;
   text-align: center;
 }
 
+/* FADE */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* MOBILE */
-@media(max-width:600px){
-  .float-left, .float-right { display:none; }
+@media (max-width: 700px) {
+  .split {
+    flex-direction: column;
+  }
+
+  .story-card {
+    width: 90%;
+    padding: 40px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="loader">Loading Love...</div>
-
+<!-- HERO -->
 <div class="hero">
-  <h1>Ezra & Gil</h1>
-  <p>August 8, 2026 • Bohol Tropics</p>
+  <img src="https://i.imgur.com/fDf6us1.jpeg">
+  <div class="hero-text">
+    <h1>Ezra & Gil</h1>
+    <p>August 8, 2026 • Bohol Tropics</p>
+  </div>
 </div>
 
 <!-- STORY -->
-<div class="section" style="--bg:url('https://i.imgur.com/hDLxn03.jpeg')">
-  <div class="float-left"><img src="https://i.imgur.com/fDf6us1.jpeg"></div>
-
-  <div class="panel">
+<div class="story-wrap">
+  <div class="story-card fade">
     <h2>Our Story</h2>
-    <p>A journey of love and choosing each other.</p>
+    <p>A journey of love, patience, and choosing each other every day.</p>
   </div>
-
-  <div class="float-right"><img src="https://i.imgur.com/OscEMZZ.jpeg"></div>
 </div>
 
 <!-- TIMELINE -->
-<div class="section" style="--bg:url('https://i.imgur.com/HgBD7Mz.jpeg')">
-  <div class="panel">
+<div class="split fade">
+  <div class="split-img">
+    <img src="https://i.imgur.com/fDf6us1.jpeg">
+  </div>
+  <div class="split-text">
     <h2>Timeline</h2>
-    <p>2PM Arrival</p>
-    <p>3PM Ceremony</p>
-    <p>5PM Reception</p>
+    <p>2:00 PM – Arrival</p>
+    <p>3:00 PM – Ceremony</p>
+    <p>5:00 PM – Reception</p>
   </div>
 </div>
+
+<!-- IMAGE BREAK -->
+<div class="image-break"></div>
 
 <!-- LOCATION -->
-<div class="section" style="--bg:url('https://i.imgur.com/stPpfXJ.jpeg')">
-  <div class="panel">
-    <h2>Location</h2>
-    <p>Bohol Tropics</p>
-    <a class="btn" href="https://maps.google.com?q=Bohol+Tropics" target="_blank">View Map</a>
-  </div>
-</div>
+<div class="center fade">
+  <h2>Location</h2>
+  <p>Bohol Tropics, Tagbilaran City</p>
 
-<!-- GALLERY -->
-<div class="section" style="--bg:url('https://i.imgur.com/zHzz8Rs.jpeg')">
-  <div class="panel">
-    <h2>Gallery</h2>
-    <div class="gallery">
-      <img src="https://i.imgur.com/KqLlOYF.jpeg">
-      <img src="https://i.imgur.com/zHzz8Rs.jpeg">
-      <img src="https://i.imgur.com/fDf6us1.jpeg">
-    </div>
-  </div>
+  <a class="btn"
+     href="https://www.google.com/maps/search/?api=1&query=Bohol+Tropics"
+     target="_blank">
+     View Map
+  </a>
 </div>
 
 <!-- RSVP -->
-<div class="section" style="--bg:url('https://i.imgur.com/iM5iOhy.jpeg')">
-  <div class="panel">
-    <h2>RSVP</h2>
-    <div class="btn" onclick="openModal()">Confirm Attendance</div>
-  </div>
+<div class="rsvp fade">
+  <h2>Join Us</h2>
+  <div class="btn" onclick="openModal()">RSVP</div>
 </div>
 
 <!-- MODAL -->
-<div class="modal" id="rsvpModal">
+<div class="modal" id="modal">
   <div class="modal-content">
     <h3>RSVP</h3>
-    <p>Please confirm via form</p>
     <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">Open Form</a>
     <br><br>
     <div class="btn" onclick="closeModal()">Close</div>
@@ -222,27 +258,26 @@ body {
 </div>
 
 <script>
-// loader
-window.onload = () => {
-  document.querySelector(".loader").style.display = "none";
-};
+// fade on scroll
+const fades = document.querySelectorAll('.fade');
 
-// scroll animation
-const sections = document.querySelectorAll(".section");
-window.addEventListener("scroll", () => {
-  sections.forEach(sec => {
-    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
-      sec.classList.add("show");
+function showOnScroll() {
+  fades.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add('show');
     }
   });
-});
+}
+
+window.addEventListener('scroll', showOnScroll);
+showOnScroll();
 
 // modal
-function openModal(){
-  document.getElementById("rsvpModal").style.display="flex";
+function openModal() {
+  document.getElementById('modal').style.display = 'flex';
 }
-function closeModal(){
-  document.getElementById("rsvpModal").style.display="none";
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
 }
 </script>
 

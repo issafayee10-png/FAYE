@@ -3,165 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ezra & Gil | Wedding Invitation</title>
+<title>Ezra & Gil | Cinematic Wedding Film</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
-    --bg:#f7e1cc;
+    --bg:#f6ddc7;
     --text:#3a2a22;
     --accent:#c06a3d;
-    --accent2:#a85a33;
-    --card:rgba(255,255,255,0.75);
+    --card:rgba(255,255,255,0.7);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
     font-family:'Montserrat',sans-serif;
-    background:linear-gradient(180deg,#f7e1cc,#f3d6be);
+    background:linear-gradient(180deg,#f6ddc7,#f3d2bb);
     color:var(--text);
     overflow-x:hidden;
+    scroll-snap-type:y mandatory;
 }
 
-/* subtle cinematic grain */
 body::before{
     content:"";
     position:fixed;
     inset:0;
     background:url('https://www.transparenttextures.com/patterns/noise.png');
-    opacity:0.06;
+    opacity:0.05;
     pointer-events:none;
     z-index:999;
 }
 
-h1,h2{font-family:'Playfair Display',serif;}
-
-/* HERO ULTRA LUXURY */
-.hero{
-    height:100vh;
-    background:
-        linear-gradient(to top, rgba(40,20,10,0.75), rgba(0,0,0,0.2)),
-        url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
+/* CINEMATIC SCENES */
+.scene{
+    min-height:100vh;
+    scroll-snap-align:start;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
+    padding:60px 20px;
     position:relative;
 }
 
-.hero::after{
-    content:"";
-    position:absolute;
+h1,h2{font-family:'Playfair Display',serif;}
+
+/* INTRO */
+.intro{
+    position:fixed;
     inset:0;
-    background:radial-gradient(circle at center, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
+    background:linear-gradient(180deg,rgba(0,0,0,0.85),rgba(0,0,0,0.6));
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    z-index:9999;
+    text-align:center;
 }
 
-.hero-content{
+.intro h1{
+    font-family:'Great Vibes',cursive;
+    font-size:60px;
+}
+
+.intro button{
+    margin-top:20px;
+    padding:10px 18px;
+    border:none;
+    border-radius:30px;
+    background:var(--accent);
     color:#fff;
-    z-index:2;
-    animation:fadeUp 2s ease;
-    padding:20px;
+    cursor:pointer;
+}
+
+/* HERO CINEMATIC */
+.hero{
+    background:
+        linear-gradient(to top, rgba(30,15,10,0.7), rgba(0,0,0,0.2)),
+        url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
+    color:#fff;
 }
 
 .hero h1{
     font-family:'Great Vibes',cursive;
-    font-size:74px;
-    letter-spacing:1px;
+    font-size:72px;
+    animation:fadeUp 2s ease;
 }
 
-.hero p{opacity:0.9;font-size:16px;}
+.hero p{opacity:0.9;}
 
-/* SECTIONS */
-section{
-    max-width:900px;
-    margin:auto;
-    padding:70px 18px;
-    text-align:center;
-    opacity:0;
-    transform:translateY(30px);
-    transition:1s ease;
-}
-section.show{opacity:1;transform:translateY(0);}
-
-h2{
-    font-size:28px;
-    margin-bottom:16px;
-    color:var(--accent);
-    letter-spacing:0.5px;
-}
-
-/* GLASS CARD */
+/* CARD */
 .card{
     background:var(--card);
     padding:22px;
     border-radius:18px;
-    box-shadow:0 12px 30px rgba(0,0,0,0.08);
     backdrop-filter:blur(10px);
-    border:1px solid rgba(192,106,61,0.15);
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    max-width:700px;
 }
 
-/* COUNTDOWN ULTRA CLEAN */
+/* COUNTDOWN */
 .countdown{
     display:flex;
+    gap:12px;
     justify-content:center;
-    gap:10px;
     flex-wrap:wrap;
 }
+.countdown div{min-width:55px;}
+.countdown h3{color:var(--accent);font-size:16px;}
+.countdown p{font-size:10px;opacity:0.7;}
 
-.countdown div{
-    min-width:50px;
-}
-
-.countdown h3{
-    font-size:16px;
-    margin:0;
-    color:var(--accent);
-}
-
-.countdown p{
-    font-size:10px;
-    opacity:0.75;
-    margin-top:3px;
-}
-
-/* SLIDESHOW */
+/* SLIDESHOW CINEMATIC (KEN BURNS) */
 .slideshow{
-    max-width:720px;
-    margin:auto;
-    border-radius:18px;
+    position:relative;
+    width:100%;
+    max-width:700px;
+    height:400px;
     overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    border-radius:18px;
 }
-.slide{display:none;}
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition:opacity 1.5s ease;
+}
+
 .slide img{
     width:100%;
-    display:block;
+    height:100%;
+    object-fit:cover;
+    animation:zoom 6s ease-in-out infinite;
 }
 
-/* MAP FIXED */
-.map{
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 12px 25px rgba(0,0,0,0.12);
+@keyframes zoom{
+    0%{transform:scale(1.05);}
+    50%{transform:scale(1.15);}
+    100%{transform:scale(1.05);}
 }
+
+/* MAP */
 .map iframe{
     width:100%;
-    height:280px;
+    height:260px;
     border:0;
+    border-radius:16px;
 }
 
-/* BUTTON LINK */
-a{
-    color:var(--accent);
-    font-weight:600;
-    text-decoration:none;
-    transition:0.3s;
+/* MUSIC BUTTON */
+.music-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    padding:10px 14px;
+    border-radius:30px;
+    z-index:9999;
 }
-a:hover{color:var(--accent2);}
 
-/* PETALS (SOFTER LUXURY) */
+/* PETALS */
 .petal{
     position:fixed;
     top:-10px;
@@ -170,26 +176,20 @@ a:hover{color:var(--accent2);}
     background:rgba(255,210,180,0.7);
     border-radius:50%;
     animation:fall linear infinite;
-    pointer-events:none;
-    filter:blur(0.2px);
 }
 
 @keyframes fall{
-    0%{transform:translateY(-10vh) translateX(0);opacity:0;}
+    0%{transform:translateY(-10vh);opacity:0;}
     10%{opacity:1;}
-    100%{transform:translateY(110vh) translateX(35px);opacity:0;}
+    100%{transform:translateY(110vh) translateX(30px);opacity:0;}
 }
 
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(20px);}
-    to{opacity:1;transform:translateY(0);}
-}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
-/* MOBILE LUXURY */
+/* MOBILE */
 @media(max-width:768px){
-    .hero h1{font-size:42px;}
-    h2{font-size:22px;}
-    .countdown h3{font-size:14px;}
+    .hero h1{font-size:40px;}
+    .slideshow{height:260px;}
 }
 
 </style>
@@ -197,24 +197,39 @@ a:hover{color:var(--accent2);}
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
-    <div class="hero-content">
+<!-- INTRO -->
+<div class="intro" id="intro">
+    <h1>Ezra & Gil</h1>
+    <p>A Cinematic Wedding Experience</p>
+    <button onclick="enterSite()">Enter Film</button>
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1f3b2c6.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+
+<!-- HERO SCENE -->
+<section class="scene hero">
+    <div>
         <h1>Ezra & Gil</h1>
         <p>We’re getting married</p>
         <p>August 8, 2026</p>
     </div>
-</div>
-
-<!-- STORY -->
-<section>
-    <h2>Our Story</h2>
-    <div class="card">A love written softly through time.</div>
 </section>
 
-<!-- SLIDESHOW -->
-<section>
-    <h2>Moments</h2>
+<!-- STORY SCENE -->
+<section class="scene">
+    <div class="card">
+        <h2>Our Story</h2>
+        <p>A love story written softly through time and moments.</p>
+    </div>
+</section>
+
+<!-- SLIDESHOW SCENE -->
+<section class="scene">
     <div class="slideshow">
         <div class="slide"><img src="https://i.imgur.com/HgBD7Mz.jpeg"></div>
         <div class="slide"><img src="https://i.imgur.com/kZ9Y1kr.jpeg"></div>
@@ -223,42 +238,25 @@ a:hover{color:var(--accent2);}
 </section>
 
 <!-- DETAILS -->
-<section>
-    <h2>Wedding Details</h2>
+<section class="scene">
     <div class="card">
-        <p><strong>Date:</strong> August 8, 2026</p>
-        <p><strong>Time:</strong> 3:00 PM</p>
-        <p><strong>Venue:</strong> Maribojoc Church, Bohol</p>
+        <h2>Wedding Details</h2>
+        <p>August 8, 2026</p>
+        <p>3:00 PM</p>
+        <p>Maribojoc Church, Bohol</p>
     </div>
 </section>
 
 <!-- MAP -->
-<section>
-    <h2>Location</h2>
-    <div class="map card">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa4ba8d05c451f%3A0xb2970777a443c5a6!2sMaribojoc%20Church%20(Holy%20Cross%20Parish)!5e0!3m2!1sen!2sph!4v1776604955397!5m2!1sen!2sph"></iframe>
+<section class="scene">
+    <div class="card map">
+        <h2>Location</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351"></iframe>
     </div>
 </section>
 
-<!-- QR -->
-<section>
-    <h2>Capture the Love</h2>
-    <div class="card">
-        <img src="https://i.imgur.com/AnVOf83.jpeg" width="160" style="border-radius:12px;">
-    </div>
-</section>
-
-<!-- RSVP -->
-<section>
-    <h2>RSVP</h2>
-    <div class="card">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">Click here to RSVP</a>
-    </div>
-</section>
-
-<!-- FOOTER COUNTDOWN -->
-<section>
-    <h2>Countdown to Forever 💍</h2>
+<!-- COUNTDOWN -->
+<section class="scene">
     <div class="card countdown">
         <div><h3 id="days">0</h3><p>Days</p></div>
         <div><h3 id="hours">0</h3><p>Hrs</p></div>
@@ -268,11 +266,21 @@ a:hover{color:var(--accent2);}
 </section>
 
 <script>
-const sections=document.querySelectorAll('section');
-const obs=new IntersectionObserver(e=>{
-    e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show');});
-});
-sections.forEach(s=>obs.observe(s));
+function enterSite(){
+    document.getElementById('intro').style.display='none';
+    let m=document.getElementById('music');
+    m.volume=0;
+    m.play();
+    let fade=setInterval(()=>{
+        if(m.volume<0.5)m.volume+=0.05;
+        else clearInterval(fade);
+    },200);
+}
+
+function toggleMusic(){
+    let m=document.getElementById('music');
+    if(m.paused)m.play(); else m.pause();
+}
 
 const wedding=new Date("August 8, 2026 15:00:00").getTime();
 setInterval(()=>{
@@ -286,21 +294,27 @@ setInterval(()=>{
     document.getElementById("seconds").innerText=Math.floor((d%m)/s);
 },1000);
 
+const sections=document.querySelectorAll('.scene');
+const obs=new IntersectionObserver(e=>{
+    e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show');});
+});
+sections.forEach(s=>obs.observe(s));
+
 let i=0;
 function show(){
-    let slides=document.querySelectorAll(".slide");
-    slides.forEach(s=>s.style.display="none");
+    let slides=document.querySelectorAll('.slide');
+    slides.forEach(s=>s.style.opacity=0);
     i++; if(i>slides.length)i=1;
-    slides[i-1].style.display="block";
-    setTimeout(show,3000);
+    slides[i-1].style.opacity=1;
+    setTimeout(show,4000);
 }
 show();
 
-for(let i=0;i<35;i++){
-    let p=document.createElement("div");
-    p.className="petal";
-    p.style.left=Math.random()*100+"vw";
-    p.style.animationDuration=(5+Math.random()*6)+"s";
+for(let i=0;i<30;i++){
+    let p=document.createElement('div');
+    p.className='petal';
+    p.style.left=Math.random()*100+'vw';
+    p.style.animationDuration=(5+Math.random()*5)+'s';
     document.body.appendChild(p);
 }
 </script>

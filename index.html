@@ -9,41 +9,40 @@
 
 <style>
 :root{
-    /* MORE ORANGE RUSTIC PALETTE */
-    --bg:#f6e2cf;
+    --bg:#f7e1cc;
     --text:#3a2a22;
     --accent:#c06a3d;
     --accent2:#a85a33;
-    --card:rgba(255,255,255,0.78);
+    --card:rgba(255,255,255,0.75);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
     font-family:'Montserrat',sans-serif;
-    background:var(--bg);
+    background:linear-gradient(180deg,#f7e1cc,#f3d6be);
     color:var(--text);
     overflow-x:hidden;
 }
 
-/* subtle warm grain */
+/* subtle cinematic grain */
 body::before{
     content:"";
     position:fixed;
     inset:0;
     background:url('https://www.transparenttextures.com/patterns/noise.png');
-    opacity:0.08;
+    opacity:0.06;
     pointer-events:none;
     z-index:999;
 }
 
 h1,h2{font-family:'Playfair Display',serif;}
 
-/* HERO CINEMATIC (WARMER ORANGE TONE) */
+/* HERO ULTRA LUXURY */
 .hero{
     height:100vh;
     background:
-        linear-gradient(to top, rgba(60,30,15,0.75), rgba(0,0,0,0.25)),
+        linear-gradient(to top, rgba(40,20,10,0.75), rgba(0,0,0,0.2)),
         url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
     display:flex;
     align-items:center;
@@ -52,117 +51,133 @@ h1,h2{font-family:'Playfair Display',serif;}
     position:relative;
 }
 
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at center, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
+}
+
 .hero-content{
     color:#fff;
     z-index:2;
     animation:fadeUp 2s ease;
+    padding:20px;
 }
 
 .hero h1{
     font-family:'Great Vibes',cursive;
-    font-size:68px;
-    margin:0;
+    font-size:74px;
+    letter-spacing:1px;
 }
 
-.hero p{opacity:0.9;}
+.hero p{opacity:0.9;font-size:16px;}
 
 /* SECTIONS */
 section{
     max-width:900px;
     margin:auto;
-    padding:70px 20px;
+    padding:70px 18px;
     text-align:center;
     opacity:0;
     transform:translateY(30px);
-    transition:1s;
+    transition:1s ease;
 }
 section.show{opacity:1;transform:translateY(0);}
 
 h2{
-    font-size:30px;
-    margin-bottom:15px;
+    font-size:28px;
+    margin-bottom:16px;
     color:var(--accent);
+    letter-spacing:0.5px;
 }
 
+/* GLASS CARD */
 .card{
     background:var(--card);
     padding:22px;
-    border-radius:16px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    backdrop-filter:blur(6px);
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    backdrop-filter:blur(10px);
     border:1px solid rgba(192,106,61,0.15);
 }
 
-/* SMALL COUNTDOWN */
-.countdown-mini{
+/* COUNTDOWN ULTRA CLEAN */
+.countdown{
     display:flex;
     justify-content:center;
-    gap:8px;
+    gap:10px;
     flex-wrap:wrap;
-    padding:15px;
 }
 
-.countdown-mini div{
+.countdown div{
     min-width:50px;
 }
 
-.countdown-mini h3{
-    font-size:18px;
+.countdown h3{
+    font-size:16px;
     margin:0;
     color:var(--accent);
 }
 
-.countdown-mini p{
+.countdown p{
     font-size:10px;
+    opacity:0.75;
     margin-top:3px;
-    opacity:0.8;
 }
 
 /* SLIDESHOW */
 .slideshow{
-    max-width:700px;
+    max-width:720px;
     margin:auto;
     border-radius:18px;
     overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 .slide{display:none;}
 .slide img{
     width:100%;
-    border-radius:18px;
+    display:block;
 }
 
-/* MAP */
+/* MAP FIXED */
 .map{
-    border-radius:16px;
+    border-radius:18px;
     overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    box-shadow:0 12px 25px rgba(0,0,0,0.12);
+}
+.map iframe{
+    width:100%;
+    height:280px;
+    border:0;
 }
 
-/* LINKS */
+/* BUTTON LINK */
 a{
     color:var(--accent);
     font-weight:600;
     text-decoration:none;
+    transition:0.3s;
 }
-
 a:hover{color:var(--accent2);}
 
-/* PETALS */
+/* PETALS (SOFTER LUXURY) */
 .petal{
     position:fixed;
     top:-10px;
-    width:8px;
-    height:8px;
-    background:rgba(255,200,160,0.7);
+    width:7px;
+    height:7px;
+    background:rgba(255,210,180,0.7);
     border-radius:50%;
     animation:fall linear infinite;
     pointer-events:none;
+    filter:blur(0.2px);
 }
 
 @keyframes fall{
     0%{transform:translateY(-10vh) translateX(0);opacity:0;}
     10%{opacity:1;}
-    100%{transform:translateY(110vh) translateX(30px);opacity:0;}
+    100%{transform:translateY(110vh) translateX(35px);opacity:0;}
 }
 
 @keyframes fadeUp{
@@ -170,10 +185,13 @@ a:hover{color:var(--accent2);}
     to{opacity:1;transform:translateY(0);}
 }
 
+/* MOBILE LUXURY */
 @media(max-width:768px){
-    .hero h1{font-size:40px;}
-    h2{font-size:24px;}
+    .hero h1{font-size:42px;}
+    h2{font-size:22px;}
+    .countdown h3{font-size:14px;}
 }
+
 </style>
 </head>
 
@@ -188,30 +206,16 @@ a:hover{color:var(--accent2);}
     </div>
 </div>
 
-<!-- COUNTDOWN -->
-<section>
-    <h2>Countdown to Forever 💍</h2>
-    <div class="card countdown">
-        <div><h3 id="days">0</h3><p>Days</p></div>
-        <div><h3 id="hours">0</h3><p>Hrs</p></div>
-        <div><h3 id="minutes">0</h3><p>Mins</p></div>
-        <div><h3 id="seconds">0</h3><p>Secs</p></div>
-    </div>
-</section>
-
 <!-- STORY -->
 <section>
     <h2>Our Story</h2>
-    <div class="card">A warm rustic love story written through time.</div>
+    <div class="card">A love written softly through time.</div>
 </section>
 
 <!-- SLIDESHOW -->
 <section>
     <h2>Moments</h2>
     <div class="slideshow">
-        <div class="slide"><img src="https://i.imgur.com/HgBD7Mz.jpeg"></div>
-        <div class="slide"><img src="https://i.imgur.com/kZ9Y1kr.jpeg"></div>
-        <div class="slide"><img src="https://i.imgur.com/fDf6us1.jpeg"></div>
         <div class="slide"><img src="https://i.imgur.com/HgBD7Mz.jpeg"></div>
         <div class="slide"><img src="https://i.imgur.com/kZ9Y1kr.jpeg"></div>
         <div class="slide"><img src="https://i.imgur.com/fDf6us1.jpeg"></div>
@@ -231,26 +235,16 @@ a:hover{color:var(--accent2);}
 <!-- MAP -->
 <section>
     <h2>Location</h2>
-    <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa4ba8d05c451f%3A0xb2970777a443c5a6!2sMaribojoc%20Church%20(Holy%20Cross%20Parish)!5e0!3m2!1sen!2sph!4v1776604955397!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="map card">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa4ba8d05c451f%3A0xb2970777a443c5a6!2sMaribojoc%20Church%20(Holy%20Cross%20Parish)!5e0!3m2!1sen!2sph!4v1776604955397!5m2!1sen!2sph"></iframe>
     </div>
 </section>
 
-    
 <!-- QR -->
 <section>
     <h2>Capture the Love</h2>
-
     <div class="card">
-        <p style="margin-bottom:15px;">
-            Scan for RSVP & Wedding Details
-        </p>
-
-        <img 
-            src="https://i.imgur.com/AnVOf83.jpeg" 
-            width="180"
-            style="border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.1);"
-        >
+        <img src="https://i.imgur.com/AnVOf83.jpeg" width="160" style="border-radius:12px;">
     </div>
 </section>
 
@@ -259,6 +253,17 @@ a:hover{color:var(--accent2);}
     <h2>RSVP</h2>
     <div class="card">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">Click here to RSVP</a>
+    </div>
+</section>
+
+<!-- FOOTER COUNTDOWN -->
+<section>
+    <h2>Countdown to Forever 💍</h2>
+    <div class="card countdown">
+        <div><h3 id="days">0</h3><p>Days</p></div>
+        <div><h3 id="hours">0</h3><p>Hrs</p></div>
+        <div><h3 id="minutes">0</h3><p>Mins</p></div>
+        <div><h3 id="seconds">0</h3><p>Secs</p></div>
     </div>
 </section>
 

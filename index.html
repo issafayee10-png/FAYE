@@ -164,4 +164,126 @@ h2{
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1f3b2c6.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn
+<button class="music-btn" onclick="toggleMusic()">🎵 Tap to Play</button>
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1>Ezra & Gil</h1>
+        <p>We’re getting married</p>
+        <p>August 8, 2026</p>
+    </div>
+</section>
+
+<!-- STORY -->
+<section>
+    <h2>Our Story</h2>
+    <div class="card">A love written softly through time.</div>
+</section>
+
+<!-- SLIDESHOW -->
+<section>
+    <h2>Moments</h2>
+    <div class="slideshow">
+        <div class="slide"><img src="https://i.imgur.com/HgBD7Mz.jpeg"></div>
+        <div class="slide"><img src="https://i.imgur.com/kZ9Y1kr.jpeg"></div>
+        <div class="slide"><img src="https://i.imgur.com/fDf6us1.jpeg"></div>
+    </div>
+</section>
+
+<!-- DETAILS -->
+<section>
+    <h2>Wedding Details</h2>
+    <div class="card">
+        <p><strong>Date:</strong> August 8, 2026</p>
+        <p><strong>Time:</strong> 3:00 PM</p>
+        <p><strong>Venue:</strong> Maribojoc Church, Bohol</p>
+    </div>
+</section>
+
+<!-- MAP -->
+<section>
+    <h2>Location</h2>
+    <div class="card map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351"></iframe>
+    </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section>
+    <h2>Countdown to Forever 💍</h2>
+    <div class="card countdown">
+        <div><h3 id="days">0</h3><p>Days</p></div>
+        <div><h3 id="hours">0</h3><p>Hrs</p></div>
+        <div><h3 id="minutes">0</h3><p>Mins</p></div>
+        <div><h3 id="seconds">0</h3><p>Secs</p></div>
+    </div>
+</section>
+
+<script>
+const music=document.getElementById("music");
+const glow=document.getElementById("glow");
+let started=false;
+
+function startMusic(){
+    if(started) return;
+
+    music.volume=0;
+    music.play().then(()=>{
+        glow.classList.add("active");
+        let f=setInterval(()=>{
+            if(music.volume<0.5) music.volume+=0.05;
+            else clearInterval(f);
+        },200);
+    }).catch(()=>{});
+
+    started=true;
+}
+
+function toggleMusic(){
+    if(music.paused){
+        startMusic();
+    }else{
+        music.pause();
+    }
+}
+
+// TAP ANYWHERE TO START MUSIC (CINEMATIC EXPERIENCE)
+document.addEventListener("click", startMusic, {once:true});
+
+// COUNTDOWN
+const wedding=new Date("August 8, 2026 15:00:00").getTime();
+setInterval(()=>{
+    let now=new Date().getTime();
+    let d=wedding-now;
+    let day=86400000,h=3600000,m=60000,s=1000;
+
+    document.getElementById("days").innerText=Math.max(0,Math.floor(d/day));
+    document.getElementById("hours").innerText=Math.max(0,Math.floor((d%day)/h));
+    document.getElementById("minutes").innerText=Math.max(0,Math.floor((d%h)/m));
+    document.getElementById("seconds").innerText=Math.max(0,Math.floor((d%m)/s));
+},1000);
+
+// SLIDESHOW
+let i=0;
+function show(){
+    let slides=document.querySelectorAll(".slide");
+    slides.forEach(s=>s.style.display="none");
+    i++; if(i>slides.length)i=1;
+    slides[i-1].style.display="block";
+    setTimeout(show,3500);
+}
+show();
+
+// PETALS
+for(let i=0;i<30;i++){
+    let p=document.createElement("div");
+    p.className="petal";
+    p.style.left=Math.random()*100+"vw";
+    p.style.animationDuration=(5+Math.random()*5)+"s";
+    document.body.appendChild(p);
+}
+</script>
+
+</body>
+</html>

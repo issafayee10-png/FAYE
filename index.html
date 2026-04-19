@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ezra & Gil | Luxury Wedding Invitation</title>
+<title>Ezra & Gil | Cinematic Wedding Film</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -12,7 +12,6 @@
     --bg:#f7e1cc;
     --text:#3a2a22;
     --accent:#c06a3d;
-    --accent2:#a85a33;
     --card:rgba(255,255,255,0.78);
 }
 
@@ -60,7 +59,6 @@ h1,h2{font-family:'Playfair Display',serif;}
 
 .hero p{opacity:0.9;}
 
-/* SECTIONS (NO HIDDEN BUGS) */
 section{
     max-width:900px;
     margin:auto;
@@ -74,7 +72,6 @@ h2{
     color:var(--accent);
 }
 
-/* CARD */
 .card{
     background:var(--card);
     padding:22px;
@@ -83,7 +80,6 @@ h2{
     backdrop-filter:blur(10px);
 }
 
-/* COUNTDOWN (ALWAYS VISIBLE FIXED) */
 .countdown{
     display:flex;
     justify-content:center;
@@ -91,39 +87,20 @@ h2{
     flex-wrap:wrap;
 }
 
-.countdown div{
-    min-width:60px;
-}
+.countdown div{min-width:60px;}
+.countdown h3{font-size:16px;color:var(--accent);}
+.countdown p{font-size:10px;opacity:0.7;}
 
-.countdown h3{
-    font-size:16px;
-    color:var(--accent);
-}
-
-.countdown p{
-    font-size:10px;
-    opacity:0.7;
-}
-
-/* SLIDESHOW SAFE */
 .slideshow{
     max-width:720px;
     margin:auto;
     border-radius:18px;
     overflow:hidden;
-    position:relative;
 }
 
-.slide{
-    display:none;
-}
+.slide{display:none;}
+.slide img{width:100%;display:block;}
 
-.slide img{
-    width:100%;
-    display:block;
-}
-
-/* MAP SAFE */
 .map iframe{
     width:100%;
     height:260px;
@@ -131,7 +108,6 @@ h2{
     border-radius:16px;
 }
 
-/* MUSIC BUTTON */
 .music-btn{
     position:fixed;
     bottom:18px;
@@ -145,7 +121,6 @@ h2{
     font-size:12px;
 }
 
-/* PETALS LIGHT */
 .petal{
     position:fixed;
     top:-10px;
@@ -163,144 +138,30 @@ h2{
     100%{transform:translateY(110vh) translateX(30px);opacity:0;}
 }
 
-/* MOBILE */
+/* MUSIC INTRO GLOW */
+.music-glow{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:radial-gradient(circle at center, rgba(192,106,61,0.15), transparent 60%);
+    opacity:0;
+    transition:1s;
+}
+.music-glow.active{opacity:1;}
+
 @media(max-width:768px){
     .hero h1{font-size:42px;}
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC (FIXED AUTOPLAY BLOCK SAFE) -->
+<div class="music-glow" id="glow"></div>
+
+<!-- MUSIC -->
 <audio id="music" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1f3b2c6.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
-
-<!-- HERO -->
-<section class="hero">
-    <div>
-        <h1>Ezra & Gil</h1>
-        <p>We’re getting married</p>
-        <p>August 8, 2026</p>
-    </div>
-</section>
-
-<!-- STORY -->
-<section>
-    <h2>Our Story</h2>
-    <div class="card">A love written softly through time.</div>
-</section>
-
-<!-- SLIDESHOW -->
-<section>
-    <h2>Moments</h2>
-    <div class="slideshow">
-        <div class="slide"><img src="https://i.imgur.com/HgBD7Mz.jpeg"></div>
-        <div class="slide"><img src="https://i.imgur.com/kZ9Y1kr.jpeg"></div>
-        <div class="slide"><img src="https://i.imgur.com/fDf6us1.jpeg"></div>
-    </div>
-</section>
-
-<!-- DETAILS -->
-<section>
-    <h2>Wedding Details</h2>
-    <div class="card">
-        <p><strong>Date:</strong> August 8, 2026</p>
-        <p><strong>Time:</strong> 3:00 PM</p>
-        <p><strong>Venue:</strong> Maribojoc Church, Bohol</p>
-    </div>
-</section>
-
-<!-- MAP (FIXED SAFE EMBED) -->
-<section>
-    <h2>Location</h2>
-    <div class="card map">
-        <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa4ba8d05c451f%3A0xb2970777a443c5a6!2sMaribojoc%20Church%20(Holy%20Cross%20Parish)!5e0!3m2!1sen!2sph!4v1776604955397!5m2!1sen!2sph"
-        loading="lazy"></iframe>
-    </div>
-</section>
-
-<!-- QR -->
-<section>
-    <h2>Capture the Love</h2>
-    <div class="card">
-        <img src="https://i.imgur.com/AnVOf83.jpeg" width="160" style="border-radius:12px;">
-    </div>
-</section>
-
-<!-- RSVP -->
-<section>
-    <h2>RSVP</h2>
-    <div class="card">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">Click here to RSVP</a>
-    </div>
-</section>
-
-<!-- COUNTDOWN (FIXED ALWAYS VISIBLE) -->
-<section>
-    <h2>Countdown to Forever 💍</h2>
-    <div class="card countdown">
-        <div><h3 id="days">0</h3><p>Days</p></div>
-        <div><h3 id="hours">0</h3><p>Hrs</p></div>
-        <div><h3 id="minutes">0</h3><p>Mins</p></div>
-        <div><h3 id="seconds">0</h3><p>Secs</p></div>
-    </div>
-</section>
-
-<script>
-// MUSIC SAFE (USER INTERACTION REQUIRED)
-function toggleMusic(){
-    let m=document.getElementById("music");
-    if(m.paused){
-        m.volume=0;
-        m.play();
-        let f=setInterval(()=>{
-            if(m.volume<0.5)m.volume+=0.05;
-            else clearInterval(f);
-        },200);
-    }else{
-        m.pause();
-    }
-}
-
-// COUNTDOWN
-const wedding=new Date("August 8, 2026 15:00:00").getTime();
-setInterval(()=>{
-    let now=new Date().getTime();
-    let d=wedding-now;
-    let day=86400000,h=3600000,m=60000,s=1000;
-
-    document.getElementById("days").innerText=Math.max(0,Math.floor(d/day));
-    document.getElementById("hours").innerText=Math.max(0,Math.floor((d%day)/h));
-    document.getElementById("minutes").innerText=Math.max(0,Math.floor((d%h)/m));
-    document.getElementById("seconds").innerText=Math.max(0,Math.floor((d%m)/s));
-},1000);
-
-// SLIDESHOW SAFE
-let i=0;
-function show(){
-    let slides=document.querySelectorAll(".slide");
-    slides.forEach(s=>s.style.display="none");
-    i++; if(i>slides.length)i=1;
-    slides[i-1].style.display="block";
-    setTimeout(show,3500);
-}
-show();
-
-// PETALS
-for(let i=0;i<30;i++){
-    let p=document.createElement("div");
-    p.className="petal";
-    p.style.left=Math.random()*100+"vw";
-    p.style.animationDuration=(5+Math.random()*5)+"s";
-    document.body.appendChild(p);
-}
-</script>
-
-</body>
-</html>
+<button class="music-btn

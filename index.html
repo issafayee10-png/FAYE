@@ -14,6 +14,7 @@ body {
   font-family: 'Playfair Display', serif;
   background: #e7ddd0;
   color: #3b2a22;
+  overflow-x: hidden;
 }
 
 /* BACKGROUND */
@@ -37,7 +38,8 @@ body {
 /* HERO */
 .hero {
   text-align: center;
-  padding: 60px 20px;
+  padding: 70px 20px 40px;
+  animation: fadeUp 1.5s ease;
 }
 
 .hero h1 {
@@ -47,60 +49,68 @@ body {
 }
 
 .hero p {
-  letter-spacing: 2px;
   font-size: 13px;
+  letter-spacing: 2px;
 }
 
-/* STACKED CANVAS SECTIONS */
+/* SECTION */
 .section {
   position: relative;
-  margin: 60px auto;
   width: 85%;
   max-width: 900px;
+  margin: 80px auto;
 }
 
-/* MAIN PANEL */
+/* PAPER PANEL */
 .panel {
   background: #f8f1e8;
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.1);
   text-align: center;
+  position: relative;
+  animation: fadeUp 1.5s ease;
+}
+
+/* DECORATIVE FLOURISH */
+.flourish {
+  font-size: 24px;
+  opacity: 0.4;
 }
 
 /* FLOATING IMAGE */
-.float-img {
+.float {
   position: absolute;
   width: 160px;
+  transform: rotate(-6deg);
   top: -40px;
   left: -40px;
-  transform: rotate(-6deg);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-.float-img img {
+.float img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 /* SECOND FLOAT */
-.float-img2 {
+.float2 {
   position: absolute;
   width: 160px;
+  transform: rotate(6deg);
   bottom: -40px;
   right: -40px;
-  transform: rotate(6deg);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-/* CENTER FRAME */
+/* FRAME */
 .frame {
-  margin: 40px auto;
   background: #fffaf4;
   padding: 30px;
   border-radius: 25px;
   width: 260px;
+  margin: 30px auto;
   box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  border: 1px solid #e5d8c7;
 }
 
 .frame h3 {
@@ -119,18 +129,30 @@ body {
   text-decoration: none;
 }
 
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* MOBILE */
 @media (max-width: 600px) {
-  .float-img, .float-img2 {
+  .float, .float2 {
     display: none;
-  }
-
-  .panel {
-    padding: 25px;
   }
 
   .hero h1 {
     font-size: 40px;
+  }
+
+  .panel {
+    padding: 25px;
   }
 }
 </style>
@@ -148,44 +170,44 @@ body {
   <p>August 8, 2026 • Bohol Tropics</p>
 </div>
 
-<!-- STORY SECTION -->
+<!-- STORY -->
 <div class="section">
 
-  <div class="float-img">
+  <div class="float">
     <img src="https://i.imgur.com/fDf6us1.jpeg">
   </div>
 
   <div class="panel">
+    <div class="flourish">❦</div>
     <h2>Our Story</h2>
-    <p>
-      A journey of love, patience, and choosing each other every day.
-    </p>
+    <p>A journey of love, patience, and choosing each other every day.</p>
+    <div class="flourish">❦</div>
   </div>
 
-  <div class="float-img2">
-    <img src="https://i.imgur.com/OscEMZZ.jpeg">
+  <div class="float2">
+    <img src="https://i.imgur.com/HgBD7Mz.jpeg">
   </div>
 
 </div>
 
-<!-- TIMELINE SECTION -->
+<!-- TIMELINE -->
 <div class="section">
-
   <div class="panel">
+
     <div class="frame">
       <h3>Order of Events</h3>
       <p>2:00 PM – Arrival</p>
       <p>3:00 PM – Ceremony</p>
       <p>5:00 PM – Reception</p>
     </div>
-  </div>
 
+  </div>
 </div>
 
 <!-- LOCATION -->
 <div class="section">
-
   <div class="panel">
+    <div class="flourish">❦</div>
     <h2>Location</h2>
     <p>Bohol Tropics, Tagbilaran City</p>
 
@@ -195,20 +217,18 @@ body {
        View Map
     </a>
   </div>
-
 </div>
 
 <!-- RSVP -->
 <div class="section">
-
   <div class="panel">
+    <div class="flourish">❦</div>
     <h2>RSVP</h2>
 
     <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">
       Confirm Attendance
     </a>
   </div>
-
 </div>
 
 </body>

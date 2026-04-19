@@ -9,10 +9,12 @@
 
 <style>
 :root{
-    --bg:#f4ece4;
-    --text:#3b2f2a;
-    --accent:#8a6f5a;
-    --card:rgba(255,255,255,0.82);
+    /* MORE ORANGE RUSTIC PALETTE */
+    --bg:#f6e2cf;
+    --text:#3a2a22;
+    --accent:#c06a3d;
+    --accent2:#a85a33;
+    --card:rgba(255,255,255,0.78);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -24,25 +26,25 @@ body{
     overflow-x:hidden;
 }
 
-/* FILM GRAIN */
+/* subtle warm grain */
 body::before{
     content:"";
     position:fixed;
     inset:0;
     background:url('https://www.transparenttextures.com/patterns/noise.png');
-    opacity:0.07;
+    opacity:0.08;
     pointer-events:none;
     z-index:999;
 }
 
-h1,h2{
-    font-family:'Playfair Display',serif;
-}
+h1,h2{font-family:'Playfair Display',serif;}
 
-/* HERO CINEMATIC */
+/* HERO CINEMATIC (WARMER ORANGE TONE) */
 .hero{
     height:100vh;
-    background:url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover fixed;
+    background:
+        linear-gradient(to top, rgba(60,30,15,0.75), rgba(0,0,0,0.25)),
+        url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -50,15 +52,7 @@ h1,h2{
     position:relative;
 }
 
-.hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top,rgba(20,15,10,0.75),rgba(0,0,0,0.25));
-}
-
 .hero-content{
-    position:relative;
     color:#fff;
     z-index:2;
     animation:fadeUp 2s ease;
@@ -66,19 +60,93 @@ h1,h2{
 
 .hero h1{
     font-family:'Great Vibes',cursive;
-    font-size:72px;
+    font-size:68px;
     margin:0;
 }
 
-.hero p{opacity:0.9;font-size:18px;}
+.hero p{opacity:0.9;}
+
+/* SECTIONS */
+section{
+    max-width:900px;
+    margin:auto;
+    padding:70px 20px;
+    text-align:center;
+    opacity:0;
+    transform:translateY(30px);
+    transition:1s;
+}
+section.show{opacity:1;transform:translateY(0);}
+
+h2{
+    font-size:30px;
+    margin-bottom:15px;
+    color:var(--accent);
+}
+
+.card{
+    background:var(--card);
+    padding:22px;
+    border-radius:16px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(192,106,61,0.15);
+}
+
+/* SMALL COUNTDOWN */
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.countdown div{min-width:60px;}
+
+.countdown h3{
+    font-size:22px;
+    margin:0;
+    color:var(--accent);
+}
+
+.countdown p{font-size:12px;margin-top:4px;}
+
+/* SLIDESHOW */
+.slideshow{
+    max-width:700px;
+    margin:auto;
+    border-radius:18px;
+    overflow:hidden;
+}
+.slide{display:none;}
+.slide img{
+    width:100%;
+    border-radius:18px;
+}
+
+/* MAP */
+.map{
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* LINKS */
+a{
+    color:var(--accent);
+    font-weight:600;
+    text-decoration:none;
+}
+
+a:hover{color:var(--accent2);}
 
 /* PETALS */
 .petal{
     position:fixed;
     top:-10px;
-    width:10px;
-    height:10px;
-    background:rgba(255,255,255,0.7);
+    width:8px;
+    height:8px;
+    background:rgba(255,200,160,0.7);
     border-radius:50%;
     animation:fall linear infinite;
     pointer-events:none;
@@ -87,90 +155,17 @@ h1,h2{
 @keyframes fall{
     0%{transform:translateY(-10vh) translateX(0);opacity:0;}
     10%{opacity:1;}
-    100%{transform:translateY(110vh) translateX(40px);opacity:0;}
+    100%{transform:translateY(110vh) translateX(30px);opacity:0;}
 }
 
-/* SECTIONS */
-section{
-    max-width:900px;
-    margin:auto;
-    padding:80px 20px;
-    text-align:center;
-    opacity:0;
-    transform:translateY(40px);
-    transition:1s ease;
-}
-section.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-h2{
-    font-size:34px;
-    margin-bottom:20px;
-    color:var(--accent);
-}
-
-.card{
-    background:var(--card);
-    padding:30px;
-    border-radius:18px;
-    box-shadow:0 15px 35px rgba(0,0,0,0.08);
-    backdrop-filter:blur(6px);
-}
-
-/* COUNTDOWN */
-.countdown{
-    display:flex;
-    justify-content:space-around;
-    flex-wrap:wrap;
-    gap:12px;
-}
-.countdown div{min-width:70px;}
-.countdown h3{
-    font-size:32px;
-    margin:0;
-    color:var(--accent);
-}
-
-/* SLIDESHOW */
-.slideshow{
-    position:relative;
-    max-width:700px;
-    margin:auto;
-    overflow:hidden;
-    border-radius:18px;
-}
-.slide{
-    display:none;
-}
-.slide img{
-    width:100%;
-    border-radius:18px;
-}
-
-/* MAP */
-.map{
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
-}
-
-/* RSVP BUTTON */
-a{
-    color:var(--accent);
-    text-decoration:none;
-    font-weight:600;
-}
-
-/* ANIMATION */
 @keyframes fadeUp{
     from{opacity:0;transform:translateY(20px);}
     to{opacity:1;transform:translateY(0);}
 }
 
 @media(max-width:768px){
-    .hero h1{font-size:42px;}
+    .hero h1{font-size:40px;}
+    h2{font-size:24px;}
 }
 </style>
 </head>
@@ -191,18 +186,16 @@ a{
     <h2>Countdown to Forever</h2>
     <div class="card countdown">
         <div><h3 id="days">0</h3><p>Days</p></div>
-        <div><h3 id="hours">0</h3><p>Hours</p></div>
-        <div><h3 id="minutes">0</h3><p>Minutes</p></div>
-        <div><h3 id="seconds">0</h3><p>Seconds</p></div>
+        <div><h3 id="hours">0</h3><p>Hrs</p></div>
+        <div><h3 id="minutes">0</h3><p>Mins</p></div>
+        <div><h3 id="seconds">0</h3><p>Secs</p></div>
     </div>
 </section>
 
 <!-- STORY -->
 <section>
     <h2>Our Story</h2>
-    <div class="card">
-        A rustic love story written softly through time.
-    </div>
+    <div class="card">A warm rustic love story written through time.</div>
 </section>
 
 <!-- SLIDESHOW -->
@@ -229,7 +222,25 @@ a{
 <section>
     <h2>Location</h2>
     <div class="map">
-        <iframe src="YOUR_GOOGLE_MAP_EMBED" width="100%" height="300" style="border:0;" loading="lazy"></iframe>
+        <iframe src="https://share.google/dumw41qPmmwk7iJAl" width="100%" height="300" style="border:0;" loading="lazy"></iframe>
+    </div>
+</section>
+
+    
+<!-- QR -->
+<section>
+    <h2>Capture the Love</h2>
+
+    <div class="card">
+        <p style="margin-bottom:15px;">
+            Scan for RSVP & Wedding Details
+        </p>
+
+        <img 
+            src="https://i.imgur.com/AnVOf83.jpeg" 
+            width="180"
+            style="border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.1);"
+        >
     </div>
 </section>
 
@@ -237,22 +248,17 @@ a{
 <section>
     <h2>RSVP</h2>
     <div class="card">
-        <a href="YOUR_GOOGLE_FORM_LINK" target="_blank">Click here to RSVP</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">Click here to RSVP</a>
     </div>
 </section>
 
 <script>
-
-// SCROLL
 const sections=document.querySelectorAll('section');
 const obs=new IntersectionObserver(e=>{
-    e.forEach(x=>{
-        if(x.isIntersecting)x.target.classList.add('show');
-    });
+    e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show');});
 });
 sections.forEach(s=>obs.observe(s));
 
-// COUNTDOWN
 const wedding=new Date("August 8, 2026 15:00:00").getTime();
 setInterval(()=>{
     let now=new Date().getTime();
@@ -265,27 +271,23 @@ setInterval(()=>{
     document.getElementById("seconds").innerText=Math.floor((d%m)/s);
 },1000);
 
-// SLIDESHOW
 let i=0;
 function show(){
     let slides=document.querySelectorAll(".slide");
     slides.forEach(s=>s.style.display="none");
-    i++;
-    if(i>slides.length)i=1;
+    i++; if(i>slides.length)i=1;
     slides[i-1].style.display="block";
     setTimeout(show,3000);
 }
 show();
 
-// PETALS
-for(let i=0;i<40;i++){
+for(let i=0;i<35;i++){
     let p=document.createElement("div");
     p.className="petal";
     p.style.left=Math.random()*100+"vw";
     p.style.animationDuration=(5+Math.random()*6)+"s";
     document.body.appendChild(p);
 }
-
 </script>
 
 </body>

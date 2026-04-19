@@ -12,17 +12,18 @@
     --bg:#f6ddc7;
     --text:#3a2a22;
     --accent:#c06a3d;
-    --card:rgba(255,255,255,0.7);
+    --card:rgba(255,255,255,0.72);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
 
 body{
     font-family:'Montserrat',sans-serif;
     background:linear-gradient(180deg,#f6ddc7,#f3d2bb);
     color:var(--text);
     overflow-x:hidden;
-    scroll-snap-type:y mandatory;
 }
 
 body::before{
@@ -35,61 +36,31 @@ body::before{
     z-index:999;
 }
 
-/* CINEMATIC SCENES */
+h1,h2{font-family:'Playfair Display',serif;letter-spacing:0.3px;}
+
+/* CINEMATIC SECTIONS */
 .scene{
     min-height:100vh;
-    scroll-snap-align:start;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:60px 20px;
+    padding:60px 18px;
     position:relative;
 }
 
-h1,h2{font-family:'Playfair Display',serif;}
-
-/* INTRO */
-.intro{
-    position:fixed;
-    inset:0;
-    background:linear-gradient(180deg,rgba(0,0,0,0.85),rgba(0,0,0,0.6));
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    color:#fff;
-    z-index:9999;
-    text-align:center;
-}
-
-.intro h1{
-    font-family:'Great Vibes',cursive;
-    font-size:60px;
-}
-
-.intro button{
-    margin-top:20px;
-    padding:10px 18px;
-    border:none;
-    border-radius:30px;
-    background:var(--accent);
-    color:#fff;
-    cursor:pointer;
-}
-
-/* HERO CINEMATIC */
+/* HERO */
 .hero{
     background:
-        linear-gradient(to top, rgba(30,15,10,0.7), rgba(0,0,0,0.2)),
+        linear-gradient(to top, rgba(30,15,10,0.72), rgba(0,0,0,0.2)),
         url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
     color:#fff;
 }
 
 .hero h1{
     font-family:'Great Vibes',cursive;
-    font-size:72px;
-    animation:fadeUp 2s ease;
+    font-size:74px;
+    text-shadow:0 10px 30px rgba(0,0,0,0.3);
 }
 
 .hero p{opacity:0.9;}
@@ -97,74 +68,80 @@ h1,h2{font-family:'Playfair Display',serif;}
 /* CARD */
 .card{
     background:var(--card);
-    padding:22px;
-    border-radius:18px;
-    backdrop-filter:blur(10px);
-    box-shadow:0 12px 30px rgba(0,0,0,0.08);
-    max-width:700px;
+    padding:24px;
+    border-radius:20px;
+    backdrop-filter:blur(12px);
+    box-shadow:0 18px 40px rgba(0,0,0,0.10);
+    max-width:720px;
+    width:100%;
 }
 
-/* COUNTDOWN */
+/* COUNTDOWN LUXURY */
 .countdown{
     display:flex;
-    gap:12px;
+    gap:14px;
     justify-content:center;
     flex-wrap:wrap;
 }
-.countdown div{min-width:55px;}
-.countdown h3{color:var(--accent);font-size:16px;}
-.countdown p{font-size:10px;opacity:0.7;}
+.countdown div{
+    min-width:60px;
+}
+.countdown h3{
+    color:var(--accent);
+    font-size:18px;
+}
+.countdown p{
+    font-size:10px;
+    opacity:0.7;
+    letter-spacing:1px;
+}
 
-/* SLIDESHOW CINEMATIC (KEN BURNS) */
+/* SLIDESHOW PREMIUM */
 .slideshow{
     position:relative;
     width:100%;
-    max-width:700px;
-    height:400px;
+    max-width:720px;
+    height:420px;
     overflow:hidden;
-    border-radius:18px;
+    border-radius:22px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
 }
 
 .slide{
     position:absolute;
-    width:100%;
-    height:100%;
+    inset:0;
     opacity:0;
-    transition:opacity 1.5s ease;
+    transition:opacity 1.6s ease;
 }
 
 .slide img{
     width:100%;
     height:100%;
     object-fit:cover;
-    animation:zoom 6s ease-in-out infinite;
+    transform:scale(1.05);
 }
 
-@keyframes zoom{
-    0%{transform:scale(1.05);}
-    50%{transform:scale(1.15);}
-    100%{transform:scale(1.05);}
-}
-
-/* MAP */
+/* MAP PREMIUM */
 .map iframe{
     width:100%;
-    height:260px;
+    height:240px;
     border:0;
-    border-radius:16px;
+    border-radius:18px;
 }
 
 /* MUSIC BUTTON */
 .music-btn{
     position:fixed;
-    bottom:20px;
-    right:20px;
+    bottom:18px;
+    right:18px;
     background:var(--accent);
     color:#fff;
     border:none;
     padding:10px 14px;
     border-radius:30px;
     z-index:9999;
+    font-size:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
 /* PETALS */
@@ -181,15 +158,24 @@ h1,h2{font-family:'Playfair Display',serif;}
 @keyframes fall{
     0%{transform:translateY(-10vh);opacity:0;}
     10%{opacity:1;}
-    100%{transform:translateY(110vh) translateX(30px);opacity:0;}
+    100%{transform:translateY(110vh) translateX(25px);opacity:0;}
 }
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+/* FADE IN */
+.fade{
+    animation:fadeUp 1.2s ease both;
+}
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(18px);}
+    to{opacity:1;transform:translateY(0);}
+}
 
 /* MOBILE */
 @media(max-width:768px){
-    .hero h1{font-size:40px;}
-    .slideshow{height:260px;}
+    .hero h1{font-size:44px;}
+    .slideshow{height:280px;}
+    .card{padding:18px;}
 }
 
 </style>
@@ -197,22 +183,8 @@ h1,h2{font-family:'Playfair Display',serif;}
 
 <body>
 
-<!-- INTRO -->
-<div class="intro" id="intro">
-    <h1>Ezra & Gil</h1>
-    <p>A Cinematic Wedding Experience</p>
-    <button onclick="enterSite()">Enter Film</button>
-</div>
-
-<!-- MUSIC -->
-<audio id="music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1f3b2c6.mp3" type="audio/mpeg">
-</audio>
-
-<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
-
-<!-- HERO SCENE -->
-<section class="scene hero">
+<!-- HERO -->
+<section class="scene hero fade">
     <div>
         <h1>Ezra & Gil</h1>
         <p>We’re getting married</p>
@@ -220,16 +192,16 @@ h1,h2{font-family:'Playfair Display',serif;}
     </div>
 </section>
 
-<!-- STORY SCENE -->
-<section class="scene">
+<!-- STORY -->
+<section class="scene fade">
     <div class="card">
         <h2>Our Story</h2>
-        <p>A love story written softly through time and moments.</p>
+        <p>A love story written softly through time, moments, and grace.</p>
     </div>
 </section>
 
-<!-- SLIDESHOW SCENE -->
-<section class="scene">
+<!-- SLIDESHOW -->
+<section class="scene fade">
     <div class="slideshow">
         <div class="slide"><img src="https://i.imgur.com/HgBD7Mz.jpeg"></div>
         <div class="slide"><img src="https://i.imgur.com/kZ9Y1kr.jpeg"></div>
@@ -238,25 +210,27 @@ h1,h2{font-family:'Playfair Display',serif;}
 </section>
 
 <!-- DETAILS -->
-<section class="scene">
+<section class="scene fade">
     <div class="card">
         <h2>Wedding Details</h2>
-        <p>August 8, 2026</p>
-        <p>3:00 PM</p>
-        <p>Maribojoc Church, Bohol</p>
+        <p><strong>Date:</strong> August 8, 2026</p>
+        <p><strong>Time:</strong> 3:00 PM</p>
+        <p><strong>Venue:</strong> Maribojoc Church, Bohol</p>
     </div>
 </section>
 
 <!-- MAP -->
-<section class="scene">
-    <div class="card map">
+<section class="scene fade">
+    <div class="card">
         <h2>Location</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351"></iframe>
+        <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa4ba8d05c451f%3A0xb2970777a443c5a6!2sMaribojoc%20Church%20(Holy%20Cross%20Parish)!5e0!3m2!1sen!2sph!4v1776604955397!5m2!1sen!2sph"
+        loading="lazy"></iframe>
     </div>
 </section>
 
 <!-- COUNTDOWN -->
-<section class="scene">
+<section class="scene fade">
     <div class="card countdown">
         <div><h3 id="days">0</h3><p>Days</p></div>
         <div><h3 id="hours">0</h3><p>Hrs</p></div>
@@ -265,23 +239,20 @@ h1,h2{font-family:'Playfair Display',serif;}
     </div>
 </section>
 
-<script>
-function enterSite(){
-    document.getElementById('intro').style.display='none';
-    let m=document.getElementById('music');
-    m.volume=0;
-    m.play();
-    let fade=setInterval(()=>{
-        if(m.volume<0.5)m.volume+=0.05;
-        else clearInterval(fade);
-    },200);
-}
+<!-- MUSIC -->
+<audio id="music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1f3b2c6.mp3" type="audio/mpeg">
+</audio>
 
+<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+
+<script>
 function toggleMusic(){
     let m=document.getElementById('music');
     if(m.paused)m.play(); else m.pause();
 }
 
+// countdown
 const wedding=new Date("August 8, 2026 15:00:00").getTime();
 setInterval(()=>{
     let now=new Date().getTime();
@@ -294,23 +265,19 @@ setInterval(()=>{
     document.getElementById("seconds").innerText=Math.floor((d%m)/s);
 },1000);
 
-const sections=document.querySelectorAll('.scene');
-const obs=new IntersectionObserver(e=>{
-    e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show');});
-});
-sections.forEach(s=>obs.observe(s));
-
+// slideshow
 let i=0;
 function show(){
     let slides=document.querySelectorAll('.slide');
     slides.forEach(s=>s.style.opacity=0);
     i++; if(i>slides.length)i=1;
     slides[i-1].style.opacity=1;
-    setTimeout(show,4000);
+    setTimeout(show,4200);
 }
 show();
 
-for(let i=0;i<30;i++){
+// petals
+for(let i=0;i<28;i++){
     let p=document.createElement('div');
     p.className='petal';
     p.style.left=Math.random()*100+'vw';

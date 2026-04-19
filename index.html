@@ -14,6 +14,7 @@
 
     --brown:#4a2e22;
     --brown-deep:#2f1a12;
+    --brown-light:#c8a58a; /* NEW LIGHT BROWN */
 
     --card:rgba(245, 230, 210, 0.78);
 }
@@ -28,7 +29,6 @@ html{
     scroll-behavior:smooth;
 }
 
-/* 🎬 CINEMATIC BACKGROUND */
 body{
     font-family:'Montserrat',sans-serif;
     color:var(--text);
@@ -62,7 +62,7 @@ body::after{
     to{transform:scale(1.15);}
 }
 
-/* 🌿 SECTION FLOW */
+/* 🌿 SECTION */
 section{
     max-width:820px;
     margin:auto;
@@ -75,10 +75,10 @@ h1,h2{
     font-family:'Playfair Display',serif;
 }
 
-/* ✅ ONLY TITLES WHITE */
+/* ⭐ FIX: LIGHT BROWN TITLES */
 h2{
     font-size:22px;
-    color:#ffffff;
+    color:var(--brown-light);
     margin-bottom:12px;
 }
 
@@ -96,6 +96,11 @@ h2{
     font-family:'Great Vibes',cursive;
     font-size:clamp(46px,6vw,76px);
     line-height:1.1;
+}
+
+/* ⭐ FIX: PUSH “WE’RE GETTING MARRIED” FARTHER DOWN */
+.hero p:first-of-type{
+    margin-top:18px; /* 👈 spacing added */
 }
 
 .hero p{
@@ -116,8 +121,6 @@ h2{
     margin:auto;
 }
 
-/* ❌ IMPORTANT FIX:
-   ONLY CARD TEXT STAYS BROWN */
 .card p{
     margin-bottom:12px;
     line-height:1.7;
@@ -125,12 +128,11 @@ h2{
     color:var(--brown);
 }
 
-/* keep strong brown deep */
 strong{
     color:var(--brown-deep);
 }
 
-/* ⏳ COUNTDOWN (ONLY NUMBERS WHITE, LABELS BROWN) */
+/* ⏳ COUNTDOWN */
 .countdown{
     display:flex;
     justify-content:center;
@@ -159,10 +161,9 @@ strong{
     height:280px;
     border:0;
     border-radius:16px;
-    box-shadow:0 12px 25px rgba(0,0,0,0.15);
 }
 
-/* 🎵 MUSIC BUTTON */
+/* 🎵 BUTTON */
 .music-btn{
     position:fixed;
     bottom:18px;
@@ -176,29 +177,6 @@ strong{
     z-index:9999;
 }
 
-/* 🌸 PETALS */
-.petal{
-    position:fixed;
-    top:-10px;
-    width:7px;
-    height:7px;
-    background:rgba(255,210,180,0.7);
-    border-radius:50%;
-    animation:fall linear infinite;
-    pointer-events:none;
-}
-
-@keyframes fall{
-    0%{transform:translateY(-10vh);opacity:0;}
-    10%{opacity:1;}
-    100%{transform:translateY(110vh) translateX(25px);opacity:0;}
-}
-
-/* 📱 MOBILE */
-@media(max-width:768px){
-    .hero h1{font-size:40px;}
-    section{padding:32px 14px;}
-}
 </style>
 </head>
 
@@ -215,6 +193,8 @@ strong{
         <h1>Ezra May</h1>
         <h1>&</h1>
         <h1>Gil Jun</h1>
+
+        <!-- 👇 NOW HAS SPACE ABOVE IT -->
         <p>We’re getting married 💍</p>
         <p>August 8, 2026</p>
     </div>

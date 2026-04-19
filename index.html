@@ -1,284 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Our Wedding</title>
 
-<title>Ezra & Gil Wedding</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <style>
-html { scroll-behavior: smooth; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-  margin: 0;
-  font-family: 'Playfair Display', serif;
-  color: #2f241d;
-  background: #f3ece3;
+  font-family: 'Montserrat', sans-serif;
+  background: #0b0b0f;
+  color: #fff;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 /* HERO */
 .hero {
-  position: relative;
   height: 100vh;
-  overflow: hidden;
-}
-
-.hero img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  animation: zoom 18s ease-in-out infinite alternate;
-  filter: brightness(0.7);
-}
-
-@keyframes zoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.12); }
-}
-
-.hero-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background: url('https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  color: white;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 
 .hero h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 70px;
-  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  letter-spacing: 2px;
 }
 
 .hero p {
-  letter-spacing: 3px;
-  font-size: 14px;
+  margin-top: 10px;
+  font-size: 18px;
+  opacity: 0.8;
 }
 
-/* STORY CARD */
-.story-wrap {
-  margin-top: -120px;
-  display: flex;
-  justify-content: center;
+/* SECTIONS */
+section {
+  padding: 120px 10%;
 }
 
-.story-card {
-  background: #f8f1e8;
-  padding: 60px;
-  border-radius: 20px;
-  width: 70%;
-  text-align: center;
-  box-shadow: 0 25px 70px rgba(0,0,0,0.2);
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1s;
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  margin-bottom: 20px;
 }
 
-.story-card.show {
-  opacity: 1;
-  transform: translateY(0);
+.text {
+  font-size: 16px;
+  opacity: 0.85;
+  line-height: 1.8;
+  max-width: 700px;
 }
 
-/* SPLIT SECTION */
-.split {
-  display: flex;
-  min-height: 500px;
-  margin-top: 80px;
-}
-
-.split-img {
-  flex: 1;
-}
-
-.split-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.split-text {
-  flex: 1;
-  padding: 80px;
-  background: #f8f1e8;
+/* TIMELINE */
+.timeline {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 30px;
 }
 
-/* PARALLAX IMAGE */
-.image-break {
-  height: 70vh;
-  background: url('https://i.imgur.com/jCRvOTr.jpeg') center/cover fixed;
+.timeline-item {
+  padding-left: 20px;
+  border-left: 2px solid rgba(255,255,255,0.2);
 }
 
-/* CENTER SECTION */
-.center {
-  text-align: center;
-  padding: 100px 20px;
+/* VOWS */
+.vows {
+  background: #111;
+  border-radius: 20px;
+  padding: 60px;
 }
 
-/* RSVP */
-.rsvp {
-  text-align: center;
-  padding: 120px 20px;
-  background: #3b2a22;
-  color: white;
-}
-
-/* BUTTON */
-.btn {
+/* RSVP BUTTON */
+.rsvp-btn {
   display: inline-block;
   margin-top: 20px;
-  padding: 12px 25px;
-  border-radius: 30px;
-  background: white;
-  color: #3b2a22;
+  padding: 14px 28px;
+  border: 1px solid #fff;
+  color: #fff;
   text-decoration: none;
-  cursor: pointer;
   transition: 0.3s;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
+.rsvp-btn:hover {
+  background: #fff;
+  color: #000;
 }
 
-/* MODAL */
-.modal {
-  position: fixed;
+/* PARALLAX SECTIONS */
+.parallax {
+  height: 60vh;
+  background: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+  position: relative;
+}
+
+.parallax::after {
+  content: "";
+  position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: none;
-  justify-content: center;
-  align-items: center;
+  background: rgba(0,0,0,0.4);
 }
 
-.modal-content {
-  background: #fffaf4;
-  padding: 30px;
-  border-radius: 12px;
-  width: 300px;
+/* FOOTER */
+footer {
   text-align: center;
-}
-
-/* FADE */
-.fade {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1s;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* MOBILE */
-@media (max-width: 700px) {
-  .split {
-    flex-direction: column;
-  }
-
-  .story-card {
-    width: 90%;
-    padding: 40px;
-  }
-
-  .hero h1 {
-    font-size: 40px;
-  }
+  padding: 80px 20px;
+  opacity: 0.6;
 }
 </style>
 </head>
 
 <body>
 
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a2c2b5.mp3?filename=romantic-piano-ambient-110397.mp3" type="audio/mpeg">
+</audio>
+
 <!-- HERO -->
 <div class="hero">
-  <img src="https://i.imgur.com/fDf6us1.jpeg">
-  <div class="hero-text">
-    <h1>Ezra & Gil</h1>
-    <p>August 8, 2026 • Bohol Tropics</p>
+  <div class="hero-content">
+    <h1 class="fade">[Ezra May & Gil Jun]</h1>
+    <p class="fade">Two souls. One story. Forever begins here.</p>
   </div>
 </div>
 
 <!-- STORY -->
-<div class="story-wrap">
-  <div class="story-card fade">
-    <h2>Our Story</h2>
-    <p>A journey of love, patience, and choosing each other every day.</p>
-  </div>
-</div>
+<section>
+  <h2 class="title reveal">Our Story</h2>
+  <p class="text reveal">
+    We didn’t plan for this story. It just happened — quietly, beautifully, unexpectedly.
+    Somewhere between conversations and coincidences, we found something real.
+  </p>
+</section>
+
+<!-- PARALLAX -->
+<div class="parallax"></div>
 
 <!-- TIMELINE -->
-<div class="split fade">
-  <div class="split-img">
-    <img src="https://i.imgur.com/fDf6us1.jpeg">
+<section>
+  <h2 class="title reveal">Our Journey</h2>
+
+  <div class="timeline">
+    <div class="timeline-item reveal">First Meeting — everything started quietly here.</div>
+    <div class="timeline-item reveal">Becoming Us — small moments, big meaning.</div>
+    <div class="timeline-item reveal">The Turning Point — when we knew.</div>
+    <div class="timeline-item reveal">The Promise — no hesitation, just certainty.</div>
+    <div class="timeline-item reveal">Today — standing at forever.</div>
   </div>
-  <div class="split-text">
-    <h2>Timeline</h2>
-    <p>2:00 PM – Arrival</p>
-    <p>3:00 PM – Ceremony</p>
-    <p>5:00 PM – Reception</p>
+</section>
+
+<!-- VOWS -->
+<section>
+  <div class="vows">
+    <h2 class="title reveal">Our Vows</h2>
+
+    <p class="text reveal">
+      I choose you in every version of life — the easy days and the hard ones.
+      I promise to grow with you, not away from you.
+    </p>
+
+    <br/>
+
+    <p class="text reveal">
+      I promise to stand beside you, support your dreams, and love you in every chapter ahead.
+      You are my home.
+    </p>
   </div>
-</div>
+</section>
 
-<!-- IMAGE BREAK -->
-<div class="image-break"></div>
+<!-- EVENT -->
+<section>
+  <h2 class="title reveal">The Celebration</h2>
+  <p class="text reveal">
+    📅 [Aug 8 2026] <br/>
+    📍 [Bohol Tropic] <br/>
+    ⏰ [03:00PM]
+  </p>
 
-<!-- LOCATION -->
-<div class="center fade">
-  <h2>Location</h2>
-  <p>Bohol Tropics, Tagbilaran City</p>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" class="rsvp-btn reveal">RSVP Now</a>
+</section>
 
-  <a class="btn"
-     href="https://www.google.com/maps/search/?api=1&query=Bohol+Tropics"
-     target="_blank">
-     View Map
-  </a>
-</div>
+<!-- FOOTER -->
+<footer>
+  See you at forever.
+</footer>
 
-<!-- RSVP -->
-<div class="rsvp fade">
-  <h2>Join Us</h2>
-  <div class="btn" onclick="openModal()">RSVP</div>
-</div>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <h3>RSVP</h3>
-    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">Open Form</a>
-    <br><br>
-    <div class="btn" onclick="closeModal()">Close</div>
-  </div>
-</div>
-
+<!-- ANIMATIONS -->
 <script>
-// fade on scroll
-const fades = document.querySelectorAll('.fade');
+gsap.registerPlugin(ScrollTrigger);
 
-function showOnScroll() {
-  fades.forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-      el.classList.add('show');
-    }
+// fade hero text
+gsap.from(".fade", {
+  opacity: 0,
+  y: 30,
+  duration: 1.5,
+  stagger: 0.3
+});
+
+// scroll reveal
+gsap.utils.toArray(".reveal").forEach(el => {
+  gsap.from(el, {
+    scrollTrigger: {
+      trigger: el,
+      start: "top 85%"
+    },
+    opacity: 0,
+    y: 40,
+    duration: 1
   });
-}
-
-window.addEventListener('scroll', showOnScroll);
-showOnScroll();
-
-// modal
-function openModal() {
-  document.getElementById('modal').style.display = 'flex';
-}
-function closeModal() {
-  document.getElementById('modal').style.display = 'none';
-}
+});
 </script>
 
 </body>

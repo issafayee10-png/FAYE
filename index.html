@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ezra & Gil | Wedding Invitation</title>
+<title>Ezra & Gil | Cinematic Wedding Film</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -17,15 +17,30 @@
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
-html,body{
-    width:100%;
-    overflow-x:hidden;
+html{
+    scroll-behavior:smooth;
+}
+
+body{
     font-family:'Montserrat',sans-serif;
     background:linear-gradient(180deg,#f7e1cc,#f3d6be);
     color:var(--text);
+    overflow-x:hidden;
+    position:relative;
 }
 
-/* GLOBAL TYPOGRAPHY */
+/* CINEMATIC GRAIN */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:url('https://www.transparenttextures.com/patterns/film-grain.png');
+    opacity:0.07;
+    pointer-events:none;
+    z-index:2;
+}
+
+/* TYPOGRAPHY */
 h1,h2{
     font-family:'Playfair Display',serif;
 }
@@ -37,14 +52,17 @@ h1{
 h2{
     font-size:clamp(20px,3vw,28px);
     color:var(--accent);
+    letter-spacing:1px;
 }
 
-/* SECTIONS */
+/* SECTION FLOW (FIXED SPACING ISSUE) */
 section{
-    max-width:1100px;
+    max-width:1000px;
     margin:auto;
-    padding:70px 24px;
+    padding:55px 20px;
     text-align:center;
+    position:relative;
+    z-index:3;
 }
 
 /* CARD */
@@ -58,7 +76,7 @@ section{
     margin:auto;
 }
 
-/* HERO */
+/* HERO CINEMATIC */
 .hero{
     height:100vh;
     display:flex;
@@ -69,6 +87,7 @@ section{
         linear-gradient(to top, rgba(40,20,10,0.75), rgba(0,0,0,0.2)),
         url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
     color:#fff;
+    position:relative;
 }
 
 .hero p{
@@ -87,6 +106,11 @@ section{
     min-width:70px;
 }
 
+.countdown h3{
+    font-size:16px;
+    color:var(--accent);
+}
+
 /* SLIDESHOW */
 .slideshow{
     max-width:800px;
@@ -98,7 +122,7 @@ section{
 .slide{display:none;}
 .slide img{width:100%;display:block;}
 
-/* MAP RESPONSIVE FIX */
+/* MAP FIX */
 .map iframe{
     width:100%;
     height:420px;
@@ -127,6 +151,26 @@ section{
     z-index:9999;
 }
 
+/* CINEMATIC FADE IN */
+section{
+    opacity:0;
+    transform:translateY(25px);
+    animation:fadeIn 1.2s ease forwards;
+}
+
+section:nth-child(2){animation-delay:0.1s;}
+section:nth-child(3){animation-delay:0.2s;}
+section:nth-child(4){animation-delay:0.3s;}
+section:nth-child(5){animation-delay:0.4s;}
+section:nth-child(6){animation-delay:0.5s;}
+
+@keyframes fadeIn{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
 /* PETALS */
 .petal{
     position:fixed;
@@ -150,12 +194,12 @@ section{
 
 <body>
 
-<!-- MUSIC -->
+<!-- AUDIO -->
 <audio id="music" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1f3b2c6.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn" onclick="toggleMusic()">🎵 Tap Music</button>
+<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
 
 <!-- HERO -->
 <section class="hero">
@@ -169,7 +213,7 @@ section{
 <!-- STORY -->
 <section>
     <h2>Our Story</h2>
-    <div class="card">A love written softly through time.</div>
+    <div class="card">A cinematic love written through time.</div>
 </section>
 
 <!-- DETAILS -->
@@ -182,15 +226,12 @@ section{
     </div>
 </section>
 
-<!-- MAP (FIXED YOUR EXACT LINK) -->
+<!-- MAP -->
 <section>
     <h2>Location</h2>
     <div class="card map">
-
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa4ba8d05c451f%3A0xb2970777a443c5a6!2sMaribojoc%20Church%20(Holy%20Cross%20Parish)!5e0!3m2!1sen!2sph!4v1776604955397!5m2!1sen!2sph"
-        loading="lazy"
-        allowfullscreen></iframe>
-
+        loading="lazy"></iframe>
     </div>
 </section>
 
@@ -207,29 +248,31 @@ section{
 
 <script>
 
-/* MUSIC (FIXED TAP-TO-PLAY) */
+/* 🎵 RELIABLE TAP-TO-PLAY MUSIC FIX */
 const music = document.getElementById("music");
-let playing = false;
+let unlocked = false;
 
-function toggleMusic(){
-    if(!playing){
-        music.volume = 1;
-        music.play();
-        playing = true;
-    }else{
-        music.pause();
-        playing = false;
-    }
+function unlockMusic(){
+    if(unlocked) return;
+
+    music.volume = 1;
+
+    music.play().then(()=>{
+        unlocked = true;
+    }).catch(()=>{});
+
 }
 
-/* TAP ANYWHERE START MUSIC */
-document.addEventListener("click", function startOnce(){
-    if(!playing){
-        music.play().catch(()=>{});
-        playing = true;
+/* MOST RELIABLE MOBILE TRIGGER */
+document.addEventListener("pointerdown", unlockMusic, {once:true});
+
+function toggleMusic(){
+    if(music.paused){
+        music.play();
+    }else{
+        music.pause();
     }
-    document.removeEventListener("click", startOnce);
-});
+}
 
 /* COUNTDOWN */
 const wedding = new Date("August 8, 2026 15:00:00").getTime();
@@ -250,12 +293,12 @@ setInterval(()=>{
 },1000);
 
 /* SLIDESHOW */
-let i=0;
+let i = 0;
 function show(){
-    let slides=document.querySelectorAll(".slide");
+    let slides = document.querySelectorAll(".slide");
     slides.forEach(s=>s.style.display="none");
     i++; if(i>slides.length)i=1;
-    slides[i-1].style.display="block";
+    if(slides[i-1]) slides[i-1].style.display="block";
     setTimeout(show,3500);
 }
 show();

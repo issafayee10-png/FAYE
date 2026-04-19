@@ -3,16 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ezra May & Gil Jun | Wedding Invitation</title>
+<title>Ezra May & Gil Jun | Wedding Film</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
-    --bg:#f6e7da;
     --text:#3b2a22;
     --accent:#b06a3c;
-    --card:rgba(245, 230, 210, 0.82);
+    --card:rgba(245, 230, 210, 0.78);
 }
 
 *{
@@ -27,48 +26,88 @@ html{
 
 body{
     font-family:'Montserrat',sans-serif;
-    background:linear-gradient(180deg,#f6e7da,#e9c9a6,#d8ad82);
     color:var(--text);
     overflow-x:hidden;
 }
 
-/* cinematic grain */
+/* 🎬 CINEMATIC BACKGROUND (FULL SITE) */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
+    transform:scale(1.05);
+    animation:slowZoom 20s ease-in-out infinite alternate;
+    z-index:-2;
+}
+
 body::after{
     content:"";
     position:fixed;
     inset:0;
-    background:url('https://www.transparenttextures.com/patterns/film-grain.png');
-    opacity:0.05;
-    pointer-events:none;
+    background:linear-gradient(
+        180deg,
+        rgba(246,231,218,0.55),
+        rgba(40,20,10,0.65)
+    );
+    z-index:-1;
 }
 
-/* TYPOGRAPHY */
+/* slow cinematic zoom */
+@keyframes slowZoom{
+    from{transform:scale(1.05);}
+    to{transform:scale(1.12);}
+}
+
+/* 🌿 SCENES (CANVA STYLE FLOW) */
+section{
+    max-width:850px;
+    margin:auto;
+    padding:45px 18px;
+    text-align:center;
+    opacity:0;
+    transform:translateY(25px);
+    animation:fadeIn 1.2s ease forwards;
+}
+
+section:nth-child(2){animation-delay:0.1s;}
+section:nth-child(3){animation-delay:0.2s;}
+section:nth-child(4){animation-delay:0.3s;}
+section:nth-child(5){animation-delay:0.4s;}
+section:nth-child(6){animation-delay:0.5s;}
+
+@keyframes fadeIn{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* 💍 TYPOGRAPHY */
 h1,h2{
     font-family:'Playfair Display',serif;
 }
 
 h2{
-    font-size:26px;
+    font-size:24px;
     color:var(--accent);
     margin-bottom:12px;
 }
 
-/* HERO */
+/* 🎞 HERO FILM FRAME */
 .hero{
     height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    background:
-        linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.55)),
-        url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
     color:#fff;
+    position:relative;
 }
 
 .hero h1{
     font-family:'Great Vibes',cursive;
-    font-size:clamp(48px,6vw,78px);
+    font-size:clamp(48px,6vw,80px);
 }
 
 .hero p{
@@ -78,40 +117,18 @@ h2{
     opacity:0.85;
 }
 
-/* SECTION FLOW (CANVA STYLE) */
-section{
-    max-width:850px;
-    margin:auto;
-    padding:42px 18px;
-    text-align:center;
-    opacity:0;
-    transform:translateY(18px);
-    animation:fadeIn 1.2s ease forwards;
-}
-
-section + section{
-    margin-top:-6px;
-}
-
-@keyframes fadeIn{
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* CARD (SOFT CANVA STYLE) */
+/* 💎 CARDS (SOFT CANVA STYLE) */
 .card{
     background:var(--card);
     padding:18px;
     border-radius:14px;
     box-shadow:0 8px 20px rgba(0,0,0,0.06);
-    backdrop-filter:blur(8px);
+    backdrop-filter:blur(10px);
     max-width:520px;
     margin:auto;
 }
 
-/* COUNTDOWN */
+/* ⏳ COUNTDOWN */
 .countdown{
     display:flex;
     justify-content:center;
@@ -120,7 +137,7 @@ section + section{
 }
 
 .countdown div{
-    min-width:65px;
+    min-width:60px;
 }
 
 .countdown h3{
@@ -128,20 +145,15 @@ section + section{
     color:var(--accent);
 }
 
-.countdown p{
-    font-size:10px;
-    opacity:0.7;
-}
-
-/* MAP */
+/* 📍 MAP */
 .map iframe{
     width:100%;
-    height:320px;
+    height:300px;
     border:0;
     border-radius:14px;
 }
 
-/* MUSIC BUTTON */
+/* 🎵 MUSIC BUTTON */
 .music-btn{
     position:fixed;
     bottom:18px;
@@ -155,7 +167,7 @@ section + section{
     z-index:9999;
 }
 
-/* PETALS */
+/* 🌸 PETALS */
 .petal{
     position:fixed;
     top:-10px;
@@ -172,25 +184,23 @@ section + section{
     100%{transform:translateY(110vh) translateX(30px);opacity:0;}
 }
 
-/* MOBILE */
+/* 📱 MOBILE */
 @media(max-width:768px){
     .hero h1{font-size:42px;}
-    .map iframe{height:240px;}
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- AUDIO -->
+<!-- 🎵 MUSIC -->
 <audio id="music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1f3b2c6.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1f3b2c6.mp3">
 </audio>
 
 <button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
 
-<!-- HERO -->
+<!-- 🎬 HERO SCENE -->
 <section class="hero">
     <div>
         <h1>Ezra May & Gil Jun</h1>
@@ -199,7 +209,7 @@ section + section{
     </div>
 </section>
 
-<!-- STORY -->
+<!-- 🌿 STORY SCENE -->
 <section>
     <h2>Our Story</h2>
     <div class="card">
@@ -207,27 +217,33 @@ section + section{
     </div>
 </section>
 
-<!-- DETAILS -->
+<!-- 📸 MOMENTS -->
+<section>
+    <h2>Moments</h2>
+    <div class="card">
+        Our journey captured in light and memory.
+    </div>
+</section>
+
+<!-- 💍 DETAILS -->
 <section>
     <h2>Wedding Details</h2>
     <div class="card">
-        <p><strong>📅 Date:</strong> August 8, 2026</p>
-        <p><strong>⏰ Time:</strong> 3:00 PM</p>
-        <p><strong>📍 Venue:</strong> Maribojoc Church, Bohol</p>
+        <p><strong>Date:</strong> August 8, 2026</p>
+        <p><strong>Time:</strong> 3:00 PM</p>
+        <p><strong>Venue:</strong> Maribojoc Church, Bohol</p>
     </div>
 </section>
 
-<!-- MAP -->
+<!-- 📍 LOCATION -->
 <section>
     <h2>Location</h2>
     <div class="card map">
-        <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa4ba8d05c451f%3A0xb2970777a443c5a6!2sMaribojoc%20Church%20(Holy%20Cross%20Parish)!5e0!3m2!1sen!2sph!4v1776604955397!5m2!1sen!2sph"
-        loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351"></iframe>
     </div>
 </section>
 
-<!-- COUNTDOWN -->
+<!-- ⏳ FINAL SCENE -->
 <section>
     <h2>Countdown to Forever</h2>
     <div class="card countdown">
@@ -240,28 +256,21 @@ section + section{
 
 <script>
 
-/* 🎵 TAP TO PLAY MUSIC (WORKS ON ALL BROWSERS) */
+/* 🎵 TAP TO PLAY AUDIO (iOS SAFE) */
 const music = document.getElementById("music");
 let unlocked = false;
 
 function unlockMusic(){
     if(unlocked) return;
-
     music.volume = 1;
-
-    music.play().then(()=>{
-        unlocked = true;
-    }).catch(()=>{});
+    music.play().then(()=> unlocked = true).catch(()=>{});
 }
 
 document.addEventListener("pointerdown", unlockMusic, {once:true});
 
 function toggleMusic(){
-    if(music.paused){
-        music.play();
-    }else{
-        music.pause();
-    }
+    if(music.paused) music.play();
+    else music.pause();
 }
 
 /* ⏳ COUNTDOWN */
@@ -271,15 +280,12 @@ setInterval(()=>{
     let now = new Date().getTime();
     let d = wedding - now;
 
-    let day = 86400000,
-        h = 3600000,
-        m = 60000,
-        s = 1000;
+    let day = 86400000, h=3600000, m=60000, s=1000;
 
-    document.getElementById("days").innerText = Math.max(0, Math.floor(d/day));
-    document.getElementById("hours").innerText = Math.max(0, Math.floor((d%day)/h));
-    document.getElementById("minutes").innerText = Math.max(0, Math.floor((d%h)/m));
-    document.getElementById("seconds").innerText = Math.max(0, Math.floor((d%m)/s));
+    document.getElementById("days").innerText=Math.max(0,Math.floor(d/day));
+    document.getElementById("hours").innerText=Math.max(0,Math.floor((d%day)/h));
+    document.getElementById("minutes").innerText=Math.max(0,Math.floor((d%h)/m));
+    document.getElementById("seconds").innerText=Math.max(0,Math.floor((d%m)/s));
 },1000);
 
 /* 🌸 PETALS */

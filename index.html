@@ -1,292 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{
-  font-family:'Montserrat', sans-serif;
-  background:#f6f0ea;
-  color:#3a2f2a;
-  overflow-x:hidden;
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background: #f7f2ec;
+    color: #3a2e2a;
+    line-height: 1.6;
 }
 
-h1,h2{font-family:'Playfair Display', serif;}
-
-/* ===== HERO PARALLAX ===== */
-.hero{
-  height:100vh;
-  background:url('https://i.imgur.com/fDf6us1.jpeg') center/cover fixed;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  position:relative;
+/* HERO */
+.hero {
+    height: 100vh;
+    background: url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
 }
 
-.hero::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.45);
+.hero::after {
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.4);
 }
 
-.hero-content{
-  position:relative;
-  color:white;
-  animation:fadeUp 1.5s ease;
+.hero-content {
+    position: relative;
+    z-index: 2;
 }
 
-.hero h1{font-size:64px;}
-.hero p{font-size:18px;opacity:0.9;}
-
-/* ===== PETALS ===== */
-.petal{
-  position:fixed;
-  top:-10px;
-  width:12px;
-  height:12px;
-  background:rgba(255,255,255,0.7);
-  border-radius:50%;
-  animation:fall linear infinite;
-  pointer-events:none;
+.hero h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 60px;
+    margin: 0;
 }
 
-@keyframes fall{
-  0%{transform:translateY(-10vh) translateX(0);opacity:0;}
-  10%{opacity:1;}
-  100%{transform:translateY(110vh) translateX(40px);opacity:0;}
+.hero p {
+    font-size: 18px;
 }
 
-/* ===== SECTIONS ===== */
-.section{
-  max-width:900px;
-  margin:auto;
-  padding:100px 20px;
-  text-align:center;
-  opacity:0;
-  transform:translateY(60px);
-  transition:1s;
-}
-.section.show{opacity:1;transform:translateY(0);}
-
-/* ===== COUNTDOWN ===== */
-.countdown{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin-top:25px;
-}
-.box{
-  background:#fff;
-  padding:20px;
-  border-radius:16px;
-  box-shadow:0 15px 30px rgba(0,0,0,0.08);
-}
-.box span{font-size:26px;font-weight:600;}
-.box small{font-size:12px;color:#777;}
-
-/* ===== SLIDESHOW ===== */
-.slideshow{
-  position:relative;
-  max-width:700px;
-  margin:auto;
-  overflow:hidden;
-  border-radius:18px;
-}
-.slide{
-  display:none;
-  width:100%;
-}
-.slide img{
-  width:100%;
-  border-radius:18px;
+/* SECTIONS */
+section {
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
 }
 
-/* ===== MAP ===== */
-.map{
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
 }
 
-/* ===== RSVP ===== */
-.rsvp{
-  background:#fff;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-}
-input,textarea{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border:1px solid #ddd;
-  border-radius:10px;
-}
-button{
-  padding:12px 20px;
-  border:none;
-  background:#3a2f2a;
-  color:#fff;
-  border-radius:10px;
-  cursor:pointer;
+/* CARD STYLE */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
 
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
+/* TIMELINE */
+.timeline {
+    text-align: left;
 }
 
-@media(max-width:768px){
-  .hero h1{font-size:38px;}
-  .countdown{grid-template-columns:repeat(2,1fr);}
+.timeline-item {
+    margin-bottom: 20px;
+}
+
+/* QR */
+.qr {
+    margin-top: 20px;
+}
+
+footer {
+    padding: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
 }
 </style>
 </head>
+
 <body>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-content">
-    <h1>Ezra May</h1>
-    <h1>&</h1>
-    <h1>Gil Jun</h1>
-    <p>We're getting married</p>
-  </div>
+    <div class="hero-content">
+        <h1>Ezra May</h1>
+        <h1>&</h1>
+        <h1>Gil Jun</h1>
+        <p>We’re getting married 💍</p>
+        <p>August 8, 2026</p>
+    </div>
 </div>
+
+<!-- INVITE -->
+<section>
+    <h2>Save the Date</h2>
+    <div class="card">
+        <p>We are so excited to celebrate our special day with you.</p>
+    </div>
+</section>
 
 <!-- STORY -->
-<div class="section">
-  <h2>Our Story</h2>
-  <p>A love story written softly through time.</p>
-</div>
+<section>
+    <h2>Our Story</h2>
+    <div class="card">
+        <p>From strangers to forever. This is our journey of love, growth, and commitment.</p>
+    </div>
+</section>
 
-<!-- COUNTDOWN -->
-<div class="section">
-  <h2>Countdown</h2>
-  <div class="countdown">
-    <div class="box"><span id="days">0</span><small>Days</small></div>
-    <div class="box"><span id="hours">0</span><small>Hours</small></div>
-    <div class="box"><span id="minutes">0</span><small>Minutes</small></div>
-    <div class="box"><span id="seconds">0</span><small>Seconds</small></div>
-  </div>
-</div>
+<!-- DETAILS -->
+<section>
+    <h2>Wedding Details</h2>
+    <div class="card">
+        <p><strong>Date:</strong> August 8, 2026</p>
+        <p><strong>Time:</strong> 3:00 PM</p>
+        <p><strong>Venue:</strong> Maribojoc Church Bohol</p>
+    </div>
+</section>
 
-<!-- CINEMATIC SLIDESHOW -->
-<div class="section">
-  <h2>Moments</h2>
-  <div class="slideshow">
-    <div class="slide"><img src="https://i.imgur.com/HgBD7Mz.jpeg"></div>
-    <div class="slide"><img src="https://i.imgur.com/kZ9Y1kr.jpeg"></div>
-    <div class="slide"><img src="https://i.imgur.com/fDf6us1.jpeg"></div>
-  </div>
-</div>
+<!-- ORDER OF EVENTS -->
+<section>
+    <h2>Order of Events</h2>
+    <div class="card timeline">
+        <div class="timeline-item">💒 Ceremony - 3:00 PM</div>
+        <div class="timeline-item">📸 Photos - 4:00 PM</div>
+        <div class="timeline-item">🍽️ Dinner - 6:00 PM</div>
+        <div class="timeline-item">💃 Party - 8:00 PM</div>
+    </div>
+</section>
 
-<!-- MAP LOCATION -->
-<div class="section">
-  <h2>Venue Location</h2>
+<!-- RSVP -->
+<section>
+    <h2>RSVP</h2>
+    <div class="card">
+        <p>Please confirm your attendance.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">Click here to RSVP</a>
+    </div>
+</section>
 
-  <div style="
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
-  ">
-    <iframe
-      src="https://share.google/dumw41qPmmwk7iJAl"
-      width="100%"
-      height="320"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy">
-    </iframe>
-  </div>
-</div>
+<!-- GIFTS + QR -->
+<section>
+    <h2>Capture the Love</h2>
+    <div class="card">
+        <p>Scan below for more details</p>
+        <img src="blob:https://imgur.com/cbd10502-1899-4270-97f6-598ce051a013" width="200">
+    </div>
+</section>
 
-<!-- RSVP GOOGLE SHEETS -->
-<div class="section">
-  <h2>RSVP</h2>
-
-  <div style="
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    background:#fff;
-  ">
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform"
-      width="100%" 
-      height="600" 
-      frameborder="0" 
-      marginheight="0" 
-      marginwidth="0">
-      Loading…
-    </iframe>
-  </div>
-</div>
-
-<script>
-
-// SCROLL
-const sections=document.querySelectorAll('.section');
-const obs=new IntersectionObserver(e=>{
-  e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')});
-});
-sections.forEach(s=>obs.observe(s));
-
-// COUNTDOWN
-const d=new Date("2026-08-08").getTime();
-setInterval(()=>{
-  let n=new Date().getTime();
-  let g=d-n;
-  let day=86400000,h=3600000,m=60000,s=1000;
-  document.getElementById("days").innerText=Math.floor(g/day);
-  document.getElementById("hours").innerText=Math.floor((g%day)/h);
-  document.getElementById("minutes").innerText=Math.floor((g%h)/m);
-  document.getElementById("seconds").innerText=Math.floor((g%m)/s);
-},1000);
-
-// SLIDESHOW
-let index=0;
-function showSlides(){
-  let slides=document.querySelectorAll(".slide");
-  slides.forEach(s=>s.style.display="none");
-  index++;
-  if(index>slides.length)index=1;
-  slides[index-1].style.display="block";
-  setTimeout(showSlides,3000);
-}
-showSlides();
-
-// RSVP GOOGLE SHEETS (replace URL)
-function submitRSVP(){
-  const url="YOUR_GOOGLE_SCRIPT_URL";
-  fetch(url,{method:"POST",
-    body:JSON.stringify({
-      name:document.getElementById('name').value,
-      email:document.getElementById('email').value,
-      message:document.getElementById('message').value
-    })
-  });
-  alert("RSVP sent!");
-}
-
-// PETALS
-for(let i=0;i<30;i++){
-  let p=document.createElement("div");
-  p.className="petal";
-  p.style.left=Math.random()*100+"vw";
-  p.style.animationDuration=(5+Math.random()*5)+"s";
-  document.body.appendChild(p);
-}
-
-</script>
+<footer>
+    Made with love 💍
+</footer>
 
 </body>
 </html>

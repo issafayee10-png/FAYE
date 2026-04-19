@@ -24,20 +24,20 @@ html{
     scroll-behavior:smooth;
 }
 
+/* 🎬 CINEMATIC BACKGROUND */
 body{
     font-family:'Montserrat',sans-serif;
     color:var(--text);
     overflow-x:hidden;
 }
 
-/* 🎬 CINEMATIC BACKGROUND (FULL SITE) */
 body::before{
     content:"";
     position:fixed;
     inset:0;
     background:url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
     transform:scale(1.05);
-    animation:slowZoom 20s ease-in-out infinite alternate;
+    animation:zoom 20s ease-in-out infinite alternate;
     z-index:-2;
 }
 
@@ -53,28 +53,25 @@ body::after{
     z-index:-1;
 }
 
-/* slow cinematic zoom */
-@keyframes slowZoom{
+@keyframes zoom{
     from{transform:scale(1.05);}
     to{transform:scale(1.12);}
 }
 
-/* 🌿 SCENES (CANVA STYLE FLOW) */
+/* 🌿 SCENES */
 section{
     max-width:850px;
     margin:auto;
-    padding:45px 18px;
+    padding:42px 18px;
     text-align:center;
     opacity:0;
-    transform:translateY(25px);
+    transform:translateY(20px);
     animation:fadeIn 1.2s ease forwards;
 }
 
-section:nth-child(2){animation-delay:0.1s;}
-section:nth-child(3){animation-delay:0.2s;}
-section:nth-child(4){animation-delay:0.3s;}
-section:nth-child(5){animation-delay:0.4s;}
-section:nth-child(6){animation-delay:0.5s;}
+section + section{
+    margin-top:-6px;
+}
 
 @keyframes fadeIn{
     to{
@@ -83,7 +80,7 @@ section:nth-child(6){animation-delay:0.5s;}
     }
 }
 
-/* 💍 TYPOGRAPHY */
+/* 💎 TYPOGRAPHY */
 h1,h2{
     font-family:'Playfair Display',serif;
 }
@@ -94,7 +91,6 @@ h2{
     margin-bottom:12px;
 }
 
-/* 🎞 HERO FILM FRAME */
 .hero{
     height:100vh;
     display:flex;
@@ -102,12 +98,11 @@ h2{
     justify-content:center;
     text-align:center;
     color:#fff;
-    position:relative;
 }
 
 .hero h1{
     font-family:'Great Vibes',cursive;
-    font-size:clamp(48px,6vw,80px);
+    font-size:clamp(48px,6vw,78px);
 }
 
 .hero p{
@@ -117,7 +112,7 @@ h2{
     opacity:0.85;
 }
 
-/* 💎 CARDS (SOFT CANVA STYLE) */
+/* 💍 CARD */
 .card{
     background:var(--card);
     padding:18px;
@@ -126,6 +121,14 @@ h2{
     backdrop-filter:blur(10px);
     max-width:520px;
     margin:auto;
+}
+
+/* 📖 STORY TEXT */
+.card p{
+    margin-bottom:14px;
+    line-height:1.7;
+    font-size:14px;
+    color:#5a3a2a;
 }
 
 /* ⏳ COUNTDOWN */
@@ -184,36 +187,48 @@ h2{
     100%{transform:translateY(110vh) translateX(30px);opacity:0;}
 }
 
-/* 📱 MOBILE */
 @media(max-width:768px){
     .hero h1{font-size:42px;}
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 MUSIC -->
+<!-- 🎵 AUDIO -->
 <audio id="music" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1f3b2c6.mp3">
 </audio>
 
 <button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
 
-<!-- 🎬 HERO SCENE -->
+<!-- 🎬 HERO -->
 <section class="hero">
     <div>
         <h1>Ezra May & Gil Jun</h1>
-        <p>We’re getting married</p>
+        <p>We’re getting married 💍</p>
         <p>August 8, 2026</p>
     </div>
 </section>
 
-<!-- 🌿 STORY SCENE -->
+<!-- 🌿 STORY -->
 <section>
     <h2>Our Story</h2>
     <div class="card">
-        A cinematic love written through time.
+
+        <p>
+        Ours began in the quiet in-between moments — the kind you don’t realize will change everything until they do. Two paths that crossed gently, without noise, but with meaning that stayed.
+        </p>
+
+        <p>
+        What started as simple conversations slowly became something deeper — a place where comfort felt like home, and silence no longer felt empty but understood.
+        </p>
+
+        <p>
+        Through time, distance, and everything in between, we chose each other — not just in the easy days, but in every version of ourselves that had to grow, heal, and become ready for forever.
+        </p>
+
     </div>
 </section>
 
@@ -221,7 +236,19 @@ h2{
 <section>
     <h2>Moments</h2>
     <div class="card">
-        Our journey captured in light and memory.
+
+        <p>
+        These are not just photos — they are fragments of time we never want to forget. Little windows into laughter, quiet looks, and days that felt ordinary but meant everything.
+        </p>
+
+        <p>
+        Every moment captured here carries its own story — some loud with joy, others soft and unspoken, but all stitched together into the same journey we call ours.
+        </p>
+
+        <p>
+        When we look back, we don’t just see where we were — we see how far we’ve come, and how every step quietly led us here, to this beginning of forever.
+        </p>
+
     </div>
 </section>
 
@@ -229,9 +256,9 @@ h2{
 <section>
     <h2>Wedding Details</h2>
     <div class="card">
-        <p><strong>Date:</strong> August 8, 2026</p>
-        <p><strong>Time:</strong> 3:00 PM</p>
-        <p><strong>Venue:</strong> Maribojoc Church, Bohol</p>
+        <p><strong>📆Date:</strong> August 8, 2026</p>
+        <p><strong>⏰Time:</strong> 3:00 PM</p>
+        <p><strong>💒Venue:</strong> Maribojoc Church, Bohol</p>
     </div>
 </section>
 
@@ -239,31 +266,31 @@ h2{
 <section>
     <h2>Location</h2>
     <div class="card map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa4ba8d05c451f%3A0xb2970777a443c5a6!2sMaribojoc%20Church%20(Holy%20Cross%20Parish)!5e0!3m2!1sen!2sph!4v1776604955397!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </section>
 
-<!-- ⏳ FINAL SCENE -->
+<!-- ⏳ COUNTDOWN -->
 <section>
-    <h2>Countdown to Forever</h2>
+    <h2>Countdown to Forever ⏳</h2>
     <div class="card countdown">
-        <div><h3 id="days">0</h3><p>Days</p></div>
-        <div><h3 id="hours">0</h3><p>Hrs</p></div>
-        <div><h3 id="minutes">0</h3><p>Mins</p></div>
-        <div><h3 id="seconds">0</h3><p>Secs</p></div>
+        <div><h4 id="days">0</h4><p>Days</p></div>
+        <div><h4 id="hours">0</h4><p>Hrs</p></div>
+        <div><h4 id="minutes">0</h4><p>Mins</p></div>
+        <div><h4 id="seconds">0</h4><p>Secs</p></div>
     </div>
 </section>
 
 <script>
 
-/* 🎵 TAP TO PLAY AUDIO (iOS SAFE) */
+/* 🎵 MUSIC FIX */
 const music = document.getElementById("music");
 let unlocked = false;
 
 function unlockMusic(){
     if(unlocked) return;
     music.volume = 1;
-    music.play().then(()=> unlocked = true).catch(()=>{});
+    music.play().then(()=>unlocked=true).catch(()=>{});
 }
 
 document.addEventListener("pointerdown", unlockMusic, {once:true});
@@ -280,7 +307,7 @@ setInterval(()=>{
     let now = new Date().getTime();
     let d = wedding - now;
 
-    let day = 86400000, h=3600000, m=60000, s=1000;
+    let day=86400000,h=3600000,m=60000,s=1000;
 
     document.getElementById("days").innerText=Math.max(0,Math.floor(d/day));
     document.getElementById("hours").innerText=Math.max(0,Math.floor((d%day)/h));

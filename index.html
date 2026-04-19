@@ -1,319 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Our Wedding Film</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation</title>
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
-
-<!-- GSAP -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-/* 🌾 BASE */
 body {
-  margin: 0;
-  background: #f4ede3;
-  color: #3b2f2a;
-  font-family: 'Cormorant Garamond', serif;
-  overflow-x: hidden;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background: #f7f2ec;
+    color: #3a2e2a;
+    line-height: 1.6;
 }
 
-/* 🎞 FILM GRAIN */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url('https://www.transparenttextures.com/patterns/noise.png');
-  opacity: 0.07;
-  pointer-events: none;
-  z-index: 999;
-}
-
-/* 🌫 IMAGE OVERLAY */
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(244, 237, 227, 0.55);
-}
-
-/* 🎬 HERO */
+/* HERO */
 .hero {
-  height: 100vh;
-  background: url('https://i.imgur.com/fDf6us1.jpeg') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  filter: contrast(0.95) saturate(0.9);
+    height: 100vh;
+    background: url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.4);
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 2;
 }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 62px;
-  margin: 0;
+.hero h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 60px;
+    margin: 0;
 }
 
-.subtitle {
-  font-size: 20px;
-  opacity: 0.8;
+.hero p {
+    font-size: 18px;
 }
 
-/* 📜 SECTIONS */
+/* SECTIONS */
 section {
-  padding: 140px 12%;
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
 }
 
-/* TITLE */
-.title {
-  font-family: 'Playfair Display', serif;
-  font-size: 40px;
+h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
 }
 
-/* TEXT */
-.text {
-  font-size: 20px;
-  line-height: 1.9;
-  max-width: 750px;
-}
-
-/* 📖 STORY CARD */
+/* CARD STYLE */
 .card {
-  background: rgba(255,255,255,0.65);
-  border: 1px solid rgba(120,90,70,0.2);
-  padding: 70px;
-  border-radius: 18px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
 
-/* 🌿 STORY BACKGROUND */
-.story-bg {
-  background: url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover fixed;
-  border-radius: 30px;
-  height: 60vh;
-  filter: sepia(0.3) contrast(0.9);
-  margin: 80px 0;
-}
-
-/* 💍 VOWS */
-.vows {
-  background: url('https://i.imgur.com/zHzz8Rs.jpeg') center/cover no-repeat;
-  position: relative;
-  padding: 100px;
-  border-radius: 24px;
-  text-align: center;
-  color: #2f2a27;
-  box-shadow: 0 25px 70px rgba(0,0,0,0.08);
-}
-
-.vows::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(244, 237, 227, 0.65);
-  border-radius: 24px;
-}
-
-.vows-content {
-  position: relative;
-  z-index: 2;
-}
-
-/* ✍ SIGNATURE */
-.signature {
-  font-family: 'Great Vibes', cursive;
-  font-size: 36px;
-  margin-top: 25px;
-  color: #a67c52;
-}
-
-/* 🕰 TIMELINE */
+/* TIMELINE */
 .timeline {
-  border-left: 1px solid rgba(160,120,90,0.4);
-  padding-left: 20px;
+    text-align: left;
 }
 
-.timeline div {
-  margin-bottom: 25px;
-  position: relative;
+.timeline-item {
+    margin-bottom: 20px;
 }
 
-.timeline div::before {
-  content: "";
-  position: absolute;
-  left: -6px;
-  top: 8px;
-  width: 10px;
-  height: 10px;
-  background: #a67c52;
-  border-radius: 50%;
+/* QR */
+.qr {
+    margin-top: 20px;
 }
 
-/* 💌 SAVE THE DATE */
-.save-date {
-  text-align: center;
-}
-
-.date-card {
-  background: rgba(255,255,255,0.7);
-  border: 1px solid rgba(120,90,70,0.25);
-  padding: 50px;
-  border-radius: 24px;
-  display: inline-block;
-  box-shadow: 0 25px 70px rgba(0,0,0,0.06);
-}
-
-/* RSVP */
-.btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 14px 40px;
-  border-radius: 50px;
-  background: #a67c52;
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-}
-
-/* FOOTER */
 footer {
-  text-align: center;
-  padding: 80px;
-  opacity: 0.6;
+    padding: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎬 HERO -->
+<!-- HERO -->
 <div class="hero">
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <h1 class="fade">Ezra May</h1>
-    <h1 class="fade">&</h1>
-    <h1 class="fade">Gil Jun</h1>
-    <p class="subtitle fade">A story told in light, memory, and forever.</p>
-  </div>
+    <div class="hero-content">
+        <h1>Ezra May</h1>
+        <h1>&</h1>
+        <h1>Gil Jun</h1>
+        <p>We’re getting married 💍</p>
+        <p>August 8, 2026</p>
+    </div>
 </div>
 
-<!-- 💌 SAVE THE DATE -->
-<section class="save-date reveal">
-  <h2 class="title">Save the Date</h2>
-
-  <div class="date-card">
-    <h3>📅 August 8, 2026</h3>
-    <p>📍 Maribojoc Church, Cebu</p>
-    <p id="countdown"></p>
-  </div>
-</section>
-
-<!-- 📖 STORY -->
+<!-- INVITE -->
 <section>
-  <div class="card reveal">
-    <h2 class="title">Our Story</h2>
-    <p class="text">
-      This love wasn’t planned. It unfolded quietly — in moments we almost missed,
-      but somehow always found each other in.
-    </p>
-  </div>
-
-  <div class="story-bg reveal"></div>
-</section>
-
-<!-- 🕰 TIMELINE -->
-<section>
-  <h2 class="title reveal">Our Journey</h2>
-
-  <div class="timeline reveal">
-    <div>First Meeting — everything began here.</div>
-    <div>Getting Closer — where meaning grew.</div>
-    <div>The Realization — this is it.</div>
-    <div>The Promise — no turning back.</div>
-    <div>Forever — starts now.</div>
-  </div>
-</section>
-
-<!-- 💍 VOWS -->
-<section>
-  <div class="vows reveal">
-    <div class="vows-content">
-      <h2 class="title">Our Vows</h2>
-
-      <p class="text">
-        I choose you every day — not just in light, but in every shadow too.
-      </p>
-
-      <p class="text">
-        I promise to stay, grow, and love you through every season of life.
-      </p>
-
-      <div class="signature">Forever Yours</div>
+    <h2>Save the Date</h2>
+    <div class="card">
+        <p>We are so excited to celebrate our special day with you.</p>
     </div>
-  </div>
 </section>
 
-<!-- 💌 RSVP -->
-<section style="text-align:center;">
-  <h2 class="title reveal">Join Our Day</h2>
-  <p class="text reveal">Your presence is part of our story.</p>
-  <a class="btn reveal" href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform">RSVP Now</a>
+<!-- STORY -->
+<section>
+    <h2>Our Story</h2>
+    <div class="card">
+        <p>From strangers to forever. This is our journey of love, growth, and commitment.</p>
+    </div>
+</section>
+
+<!-- DETAILS -->
+<section>
+    <h2>Wedding Details</h2>
+    <div class="card">
+        <p><strong>Date:</strong> August 8, 2026</p>
+        <p><strong>Time:</strong> 3:00 PM</p>
+        <p><strong>Venue:</strong> Maribojoc Church Bohol</p>
+    </div>
+</section>
+
+<!-- ORDER OF EVENTS -->
+<section>
+    <h2>Order of Events</h2>
+    <div class="card timeline">
+        <div class="timeline-item">💒 Ceremony - 3:00 PM</div>
+        <div class="timeline-item">📸 Photos - 4:00 PM</div>
+        <div class="timeline-item">🍽️ Dinner - 6:00 PM</div>
+        <div class="timeline-item">💃 Party - 8:00 PM</div>
+    </div>
+</section>
+
+<!-- RSVP -->
+<section>
+    <h2>RSVP</h2>
+    <div class="card">
+        <p>Please confirm your attendance.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">Click here to RSVP</a>
+    </div>
+</section>
+
+<!-- GIFTS + QR -->
+<section>
+    <h2>Capture the Love</h2>
+    <div class="card">
+        <p>Scan below for more details</p>
+        <img src="blob:https://imgur.com/cbd10502-1899-4270-97f6-598ce051a013" width="200">
+    </div>
 </section>
 
 <footer>
-  A film called forever.
+    Made with love 💍
 </footer>
-
-<script>
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.from(".fade", {
-  opacity: 0,
-  y: 40,
-  duration: 1.8,
-  stagger: 0.3
-});
-
-gsap.utils.toArray(".reveal").forEach(el => {
-  gsap.from(el, {
-    scrollTrigger: {
-      trigger: el,
-      start: "top 85%"
-    },
-    opacity: 0,
-    y: 30,
-    duration: 1.3,
-    ease: "power2.out"
-  });
-});
-
-/* ⏳ COUNTDOWN */
-const weddingDate = new Date("2026-12-25").getTime();
-
-function updateCountdown(){
-  const now = new Date().getTime();
-  const distance = weddingDate - now;
-  const days = Math.floor(distance / (1000*60*60*24));
-
-  document.getElementById("countdown").innerHTML =
-    days + " days until forever";
-}
-setInterval(updateCountdown, 1000);
-updateCountdown();
-</script>
 
 </body>
 </html>

@@ -12,7 +12,7 @@
     --bg:#f7e1cc;
     --text:#3a2a22;
     --accent:#c06a3d;
-    --card:rgba(255,255,255,0.78);
+   --card:rgba(245, 230, 210, 0.85);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -23,7 +23,11 @@ html{
 
 body{
     font-family:'Montserrat',sans-serif;
-    background:linear-gradient(180deg,#f7e1cc,#f3d6be);
+      background: linear-gradient(
+        180deg,
+        #f8e6d2 0%,
+        #e3b98f 45%,
+        #c97f4f 100%);
     color:var(--text);
     overflow-x:hidden;
     position:relative;
@@ -68,11 +72,11 @@ section{
 /* CARD */
 .card{
     background:var(--card);
-    padding:22px;
+    padding:20px;
     border-radius:18px;
     box-shadow:0 12px 30px rgba(0,0,0,0.08);
     backdrop-filter:blur(10px);
-    max-width:800px;
+    max-width:700px;
     margin:auto;
 }
 

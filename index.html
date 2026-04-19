@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ezra & Gil | Cinematic Wedding Film</title>
+<title>Ezra & Gil | Wedding Invitation</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -17,26 +17,46 @@
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
-html{scroll-behavior:smooth;}
-
-body{
+html,body{
+    width:100%;
+    overflow-x:hidden;
     font-family:'Montserrat',sans-serif;
     background:linear-gradient(180deg,#f7e1cc,#f3d6be);
     color:var(--text);
-    overflow-x:hidden;
 }
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:url('https://www.transparenttextures.com/patterns/noise.png');
-    opacity:0.05;
-    pointer-events:none;
-    z-index:999;
+/* GLOBAL TYPOGRAPHY */
+h1,h2{
+    font-family:'Playfair Display',serif;
 }
 
-h1,h2{font-family:'Playfair Display',serif;}
+h1{
+    font-size:clamp(42px,6vw,72px);
+}
+
+h2{
+    font-size:clamp(20px,3vw,28px);
+    color:var(--accent);
+}
+
+/* SECTIONS */
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:70px 24px;
+    text-align:center;
+}
+
+/* CARD */
+.card{
+    background:var(--card);
+    padding:22px;
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    backdrop-filter:blur(10px);
+    max-width:800px;
+    margin:auto;
+}
 
 /* HERO */
 .hero{
@@ -45,54 +65,31 @@ h1,h2{font-family:'Playfair Display',serif;}
     align-items:center;
     justify-content:center;
     text-align:center;
-    position:relative;
     background:
         linear-gradient(to top, rgba(40,20,10,0.75), rgba(0,0,0,0.2)),
         url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
     color:#fff;
 }
 
-.hero h1{
-    font-family:'Great Vibes',cursive;
-    font-size:72px;
+.hero p{
+    opacity:0.9;
 }
 
-.hero p{opacity:0.9;}
-
-section{
-    max-width:900px;
-    margin:auto;
-    padding:70px 18px;
-    text-align:center;
-}
-
-h2{
-    font-size:26px;
-    margin-bottom:16px;
-    color:var(--accent);
-}
-
-.card{
-    background:var(--card);
-    padding:22px;
-    border-radius:18px;
-    box-shadow:0 12px 30px rgba(0,0,0,0.08);
-    backdrop-filter:blur(10px);
-}
-
+/* COUNTDOWN */
 .countdown{
     display:flex;
     justify-content:center;
-    gap:10px;
+    gap:14px;
     flex-wrap:wrap;
 }
 
-.countdown div{min-width:60px;}
-.countdown h3{font-size:16px;color:var(--accent);}
-.countdown p{font-size:10px;opacity:0.7;}
+.countdown div{
+    min-width:70px;
+}
 
+/* SLIDESHOW */
 .slideshow{
-    max-width:720px;
+    max-width:800px;
     margin:auto;
     border-radius:18px;
     overflow:hidden;
@@ -101,13 +98,22 @@ h2{
 .slide{display:none;}
 .slide img{width:100%;display:block;}
 
+/* MAP RESPONSIVE FIX */
 .map iframe{
     width:100%;
-    height:260px;
+    height:420px;
     border:0;
     border-radius:16px;
 }
 
+/* MOBILE MAP */
+@media(max-width:768px){
+    .map iframe{
+        height:260px;
+    }
+}
+
+/* MUSIC BUTTON */
 .music-btn{
     position:fixed;
     bottom:18px;
@@ -117,10 +123,11 @@ h2{
     border:none;
     padding:10px 14px;
     border-radius:30px;
-    z-index:9999;
     font-size:12px;
+    z-index:9999;
 }
 
+/* PETALS */
 .petal{
     position:fixed;
     top:-10px;
@@ -138,33 +145,17 @@ h2{
     100%{transform:translateY(110vh) translateX(30px);opacity:0;}
 }
 
-/* MUSIC INTRO GLOW */
-.music-glow{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    background:radial-gradient(circle at center, rgba(192,106,61,0.15), transparent 60%);
-    opacity:0;
-    transition:1s;
-}
-.music-glow.active{opacity:1;}
-
-@media(max-width:768px){
-    .hero h1{font-size:42px;}
-}
 </style>
 </head>
 
 <body>
-
-<div class="music-glow" id="glow"></div>
 
 <!-- MUSIC -->
 <audio id="music" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1f3b2c6.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn" onclick="toggleMusic()">🎵 Tap to Play</button>
+<button class="music-btn" onclick="toggleMusic()">🎵 Tap Music</button>
 
 <!-- HERO -->
 <section class="hero">
@@ -181,16 +172,6 @@ h2{
     <div class="card">A love written softly through time.</div>
 </section>
 
-<!-- SLIDESHOW -->
-<section>
-    <h2>Moments</h2>
-    <div class="slideshow">
-        <div class="slide"><img src="https://i.imgur.com/HgBD7Mz.jpeg"></div>
-        <div class="slide"><img src="https://i.imgur.com/kZ9Y1kr.jpeg"></div>
-        <div class="slide"><img src="https://i.imgur.com/fDf6us1.jpeg"></div>
-    </div>
-</section>
-
 <!-- DETAILS -->
 <section>
     <h2>Wedding Details</h2>
@@ -201,11 +182,15 @@ h2{
     </div>
 </section>
 
-<!-- MAP -->
+<!-- MAP (FIXED YOUR EXACT LINK) -->
 <section>
     <h2>Location</h2>
     <div class="card map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351"></iframe>
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.300598257248!2d123.84111061018679!3d9.740584777405351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa4ba8d05c451f%3A0xb2970777a443c5a6!2sMaribojoc%20Church%20(Holy%20Cross%20Parish)!5e0!3m2!1sen!2sph!4v1776604955397!5m2!1sen!2sph"
+        loading="lazy"
+        allowfullscreen></iframe>
+
     </div>
 </section>
 
@@ -221,50 +206,50 @@ h2{
 </section>
 
 <script>
-const music=document.getElementById("music");
-const glow=document.getElementById("glow");
-let started=false;
 
-function startMusic(){
-    if(started) return;
-
-    music.volume=0;
-    music.play().then(()=>{
-        glow.classList.add("active");
-        let f=setInterval(()=>{
-            if(music.volume<0.5) music.volume+=0.05;
-            else clearInterval(f);
-        },200);
-    }).catch(()=>{});
-
-    started=true;
-}
+/* MUSIC (FIXED TAP-TO-PLAY) */
+const music = document.getElementById("music");
+let playing = false;
 
 function toggleMusic(){
-    if(music.paused){
-        startMusic();
+    if(!playing){
+        music.volume = 1;
+        music.play();
+        playing = true;
     }else{
         music.pause();
+        playing = false;
     }
 }
 
-// TAP ANYWHERE TO START MUSIC (CINEMATIC EXPERIENCE)
-document.addEventListener("click", startMusic, {once:true});
+/* TAP ANYWHERE START MUSIC */
+document.addEventListener("click", function startOnce(){
+    if(!playing){
+        music.play().catch(()=>{});
+        playing = true;
+    }
+    document.removeEventListener("click", startOnce);
+});
 
-// COUNTDOWN
-const wedding=new Date("August 8, 2026 15:00:00").getTime();
+/* COUNTDOWN */
+const wedding = new Date("August 8, 2026 15:00:00").getTime();
+
 setInterval(()=>{
-    let now=new Date().getTime();
-    let d=wedding-now;
-    let day=86400000,h=3600000,m=60000,s=1000;
+    let now = new Date().getTime();
+    let d = wedding - now;
 
-    document.getElementById("days").innerText=Math.max(0,Math.floor(d/day));
-    document.getElementById("hours").innerText=Math.max(0,Math.floor((d%day)/h));
-    document.getElementById("minutes").innerText=Math.max(0,Math.floor((d%h)/m));
-    document.getElementById("seconds").innerText=Math.max(0,Math.floor((d%m)/s));
+    let day = 86400000,
+        h = 3600000,
+        m = 60000,
+        s = 1000;
+
+    document.getElementById("days").innerText = Math.max(0, Math.floor(d/day));
+    document.getElementById("hours").innerText = Math.max(0, Math.floor((d%day)/h));
+    document.getElementById("minutes").innerText = Math.max(0, Math.floor((d%h)/m));
+    document.getElementById("seconds").innerText = Math.max(0, Math.floor((d%m)/s));
 },1000);
 
-// SLIDESHOW
+/* SLIDESHOW */
 let i=0;
 function show(){
     let slides=document.querySelectorAll(".slide");
@@ -275,14 +260,15 @@ function show(){
 }
 show();
 
-// PETALS
-for(let i=0;i<30;i++){
+/* PETALS */
+for(let i=0;i<25;i++){
     let p=document.createElement("div");
     p.className="petal";
     p.style.left=Math.random()*100+"vw";
     p.style.animationDuration=(5+Math.random()*5)+"s";
     document.body.appendChild(p);
 }
+
 </script>
 
 </body>

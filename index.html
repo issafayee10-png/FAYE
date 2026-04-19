@@ -6,31 +6,43 @@
 <title>Our Wedding</title>
 
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
-<!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <style>
-* {
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  background: #f8f3ee;
+  color: #2c2c2c;
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  background: #0b0b0f;
-  color: #fff;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+/* 🌸 FLOATING PARTICLES */
+.petal {
+  position: fixed;
+  top: -10px;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 192, 203, 0.5);
+  border-radius: 50%;
+  animation: fall linear infinite;
+  z-index: 0;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 
 /* HERO */
 .hero {
   height: 100vh;
-  background: url('https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+  background: url('https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,7 +54,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: linear-gradient(to bottom, rgba(248,243,238,0.2), rgba(248,243,238,0.95));
 }
 
 .hero-content {
@@ -50,90 +62,121 @@ body {
   z-index: 2;
 }
 
-.hero h1 {
+h1 {
   font-family: 'Playfair Display', serif;
   font-size: 64px;
-  letter-spacing: 2px;
+  margin: 0;
+  letter-spacing: 1px;
 }
 
-.hero p {
-  margin-top: 10px;
-  font-size: 18px;
+.subtitle {
+  font-size: 20px;
   opacity: 0.8;
+  margin-top: 10px;
 }
 
 /* SECTIONS */
 section {
-  padding: 120px 10%;
+  padding: 140px 12%;
 }
 
+/* TITLE STYLE */
 .title {
   font-family: 'Playfair Display', serif;
-  font-size: 42px;
+  font-size: 40px;
   margin-bottom: 20px;
 }
 
+/* TEXT */
 .text {
-  font-size: 16px;
-  opacity: 0.85;
-  line-height: 1.8;
-  max-width: 700px;
+  font-size: 20px;
+  line-height: 1.9;
+  color: #444;
+  max-width: 750px;
+}
+
+/* STORY CARD */
+.card {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(200,169,106,0.2);
+  padding: 60px;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.05);
 }
 
 /* TIMELINE */
 .timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  border-left: 1px solid rgba(200,169,106,0.4);
+  padding-left: 20px;
 }
 
-.timeline-item {
-  padding-left: 20px;
-  border-left: 2px solid rgba(255,255,255,0.2);
+.timeline div {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.timeline div::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  background: #c8a96a;
+  border-radius: 50%;
 }
 
 /* VOWS */
 .vows {
-  background: #111;
-  border-radius: 20px;
-  padding: 60px;
+  background: #fffaf5;
+  padding: 80px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.05);
 }
 
-/* RSVP BUTTON */
-.rsvp-btn {
-  display: inline-block;
+.signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: 34px;
   margin-top: 20px;
-  padding: 14px 28px;
-  border: 1px solid #fff;
-  color: #fff;
+  color: #c8a96a;
+}
+
+/* RSVP */
+.rsvp {
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 40px;
+  border-radius: 50px;
+  background: #c8a96a;
+  color: white;
   text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  box-shadow: 0 15px 35px rgba(200,169,106,0.3);
   transition: 0.3s;
 }
 
-.rsvp-btn:hover {
-  background: #fff;
-  color: #000;
-}
-
-/* PARALLAX SECTIONS */
-.parallax {
-  height: 60vh;
-  background: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
-  position: relative;
-}
-
-.parallax::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
+.btn:hover {
+  transform: translateY(-3px);
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 80px 20px;
+  padding: 80px;
   opacity: 0.6;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  h1 { font-size: 40px; }
+  section { padding: 100px 8%; }
+  .card, .vows { padding: 40px; }
 }
 </style>
 </head>
@@ -142,83 +185,74 @@ footer {
 
 <!-- MUSIC -->
 <audio autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a2c2b5.mp3?filename=romantic-piano-ambient-110397.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a2c2b5.mp3" type="audio/mpeg">
 </audio>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-content">
     <h1 class="fade">Ezra May & Gil Jun</h1>
-    <p class="fade">Two souls. One story. Forever begins here.</p>
+    <p class="subtitle fade">Two hearts. One forever.</p>
   </div>
 </div>
 
 <!-- STORY -->
 <section>
-  <h2 class="title reveal">Our Story</h2>
-  <p class="text reveal">
-    We didn’t plan for this story. It just happened — quietly, beautifully, unexpectedly.
-    Somewhere between conversations and coincidences, we found something real.
-  </p>
+  <div class="card reveal">
+    <h2 class="title">Our Story</h2>
+    <p class="text">
+      We didn’t plan for this love. It unfolded quietly — in conversations, in timing, in moments that felt too natural to ignore.
+      And somewhere along the way, it became home.
+    </p>
+  </div>
 </section>
-
-<!-- PARALLAX -->
-<div class="parallax"></div>
 
 <!-- TIMELINE -->
 <section>
   <h2 class="title reveal">Our Journey</h2>
-
-  <div class="timeline">
-    <div class="timeline-item reveal">First Meeting — everything started quietly here.</div>
-    <div class="timeline-item reveal">Becoming Us — small moments, big meaning.</div>
-    <div class="timeline-item reveal">The Turning Point — when we knew.</div>
-    <div class="timeline-item reveal">The Promise — no hesitation, just certainty.</div>
-    <div class="timeline-item reveal">Today — standing at forever.</div>
+  <div class="timeline reveal">
+    <div>First Meeting — where it quietly began.</div>
+    <div>Getting Closer — where meaning grew.</div>
+    <div>The Realization — this is it.</div>
+    <div>The Promise — no doubts, only certainty.</div>
+    <div>Now — forever starts here.</div>
   </div>
 </section>
+
+<!-- PARALLAX GAP -->
+<section style="background:url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc') center/cover fixed; height:60vh; border-radius:30px;"></section>
 
 <!-- VOWS -->
 <section>
-  <div class="vows">
-    <h2 class="title reveal">Our Vows</h2>
-
-    <p class="text reveal">
-      I choose you in every version of life — the easy days and the hard ones.
-      I promise to grow with you, not away from you.
+  <div class="vows reveal">
+    <h2 class="title">Our Vows</h2>
+    <p class="text">
+      I choose you in every lifetime. I promise to grow with you, not away from you.
     </p>
 
-    <br/>
-
-    <p class="text reveal">
-      I promise to stand beside you, support your dreams, and love you in every chapter ahead.
-      You are my home.
+    <p class="text">
+      I will stand beside you through every season — soft, hard, and everything in between.
     </p>
+
+    <div class="signature">Forever Yours</div>
   </div>
 </section>
 
-<!-- EVENT -->
-<section>
-  <h2 class="title reveal">The Celebration</h2>
-  <p class="text reveal">
-    📅 [Aug 8 2026] <br/>
-    📍 [Bohol Tropic] <br/>
-    ⏰ [03:00PM]
-  </p>
-
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" class="rsvp-btn reveal">RSVP Now</a>
+<!-- RSVP -->
+<section class="rsvp">
+  <h2 class="title reveal">Join Our Day</h2>
+  <p class="text reveal">Your presence means everything to us.</p>
+  <a class="btn reveal" href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform">RSVP Now</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  See you at forever.
+  See you where forever begins.
 </footer>
 
-<!-- ANIMATIONS -->
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// fade hero text
 gsap.from(".fade", {
   opacity: 0,
   y: 30,
@@ -226,7 +260,6 @@ gsap.from(".fade", {
   stagger: 0.3
 });
 
-// scroll reveal
 gsap.utils.toArray(".reveal").forEach(el => {
   gsap.from(el, {
     scrollTrigger: {
@@ -234,10 +267,23 @@ gsap.utils.toArray(".reveal").forEach(el => {
       start: "top 85%"
     },
     opacity: 0,
-    y: 40,
-    duration: 1
+    y: 25,
+    duration: 1.2,
+    ease: "power2.out"
   });
 });
+
+/* 🌸 PETALS GENERATOR */
+function createPetal(){
+  const petal = document.createElement("div");
+  petal.classList.add("petal");
+  petal.style.left = Math.random() * window.innerWidth + "px";
+  petal.style.animationDuration = (5 + Math.random() * 5) + "s";
+  document.body.appendChild(petal);
+
+  setTimeout(()=> petal.remove(), 10000);
+}
+setInterval(createPetal, 300);
 </script>
 
 </body>

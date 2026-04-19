@@ -3,97 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wedding Invitation</title>
+<title>Ezra & Gil | Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Playfair Display', serif;
-    background: #f7f2ec;
-    color: #3a2e2a;
-    line-height: 1.6;
+:root{
+    --bg:#f4ece4;
+    --text:#3b2f2a;
+    --accent:#8a6f5a;
+    --card:rgba(255,255,255,0.82);
 }
 
-/* HERO */
-.hero {
-    height: 100vh;
-    background: url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    position: relative;
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
 }
 
-.hero::after {
-    content: "";
-    position: absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background: rgba(0,0,0,0.4);
+/* FILM GRAIN */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:url('https://www.transparenttextures.com/patterns/noise.png');
+    opacity:0.07;
+    pointer-events:none;
+    z-index:999;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
+h1,h2{
+    font-family:'Playfair Display',serif;
 }
 
-.hero h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 60px;
-    margin: 0;
+/* HERO CINEMATIC */
+.hero{
+    height:100vh;
+    background:url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover fixed;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
 }
 
-.hero p {
-    font-size: 18px;
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(20,15,10,0.75),rgba(0,0,0,0.25));
+}
+
+.hero-content{
+    position:relative;
+    color:#fff;
+    z-index:2;
+    animation:fadeUp 2s ease;
+}
+
+.hero h1{
+    font-family:'Great Vibes',cursive;
+    font-size:72px;
+    margin:0;
+}
+
+.hero p{opacity:0.9;font-size:18px;}
+
+/* PETALS */
+.petal{
+    position:fixed;
+    top:-10px;
+    width:10px;
+    height:10px;
+    background:rgba(255,255,255,0.7);
+    border-radius:50%;
+    animation:fall linear infinite;
+    pointer-events:none;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-10vh) translateX(0);opacity:0;}
+    10%{opacity:1;}
+    100%{transform:translateY(110vh) translateX(40px);opacity:0;}
 }
 
 /* SECTIONS */
-section {
-    padding: 60px 20px;
-    max-width: 900px;
-    margin: auto;
-    text-align: center;
+section{
+    max-width:900px;
+    margin:auto;
+    padding:80px 20px;
+    text-align:center;
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
+}
+section.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
-h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
+h2{
+    font-size:34px;
+    margin-bottom:20px;
+    color:var(--accent);
 }
 
-/* CARD STYLE */
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+.card{
+    background:var(--card);
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+    backdrop-filter:blur(6px);
 }
 
-/* TIMELINE */
-.timeline {
-    text-align: left;
+/* COUNTDOWN */
+.countdown{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    gap:12px;
+}
+.countdown div{min-width:70px;}
+.countdown h3{
+    font-size:32px;
+    margin:0;
+    color:var(--accent);
 }
 
-.timeline-item {
-    margin-bottom: 20px;
+/* SLIDESHOW */
+.slideshow{
+    position:relative;
+    max-width:700px;
+    margin:auto;
+    overflow:hidden;
+    border-radius:18px;
+}
+.slide{
+    display:none;
+}
+.slide img{
+    width:100%;
+    border-radius:18px;
 }
 
-/* QR */
-.qr {
-    margin-top: 20px;
+/* MAP */
+.map{
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 
-footer {
-    padding: 40px;
-    text-align: center;
-    font-size: 14px;
-    color: #777;
+/* RSVP BUTTON */
+a{
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+@media(max-width:768px){
+    .hero h1{font-size:42px;}
 }
 </style>
 </head>
@@ -103,19 +180,20 @@ footer {
 <!-- HERO -->
 <div class="hero">
     <div class="hero-content">
-        <h1>Ezra May</h1>
-        <h1>&</h1>
-        <h1>Gil Jun</h1>
-        <p>We’re getting married 💍</p>
+        <h1>Ezra & Gil</h1>
+        <p>We’re getting married</p>
         <p>August 8, 2026</p>
     </div>
 </div>
 
-<!-- INVITE -->
+<!-- COUNTDOWN -->
 <section>
-    <h2>Save the Date</h2>
-    <div class="card">
-        <p>We are so excited to celebrate our special day with you.</p>
+    <h2>Countdown to Forever</h2>
+    <div class="card countdown">
+        <div><h3 id="days">0</h3><p>Days</p></div>
+        <div><h3 id="hours">0</h3><p>Hours</p></div>
+        <div><h3 id="minutes">0</h3><p>Minutes</p></div>
+        <div><h3 id="seconds">0</h3><p>Seconds</p></div>
     </div>
 </section>
 
@@ -123,7 +201,17 @@ footer {
 <section>
     <h2>Our Story</h2>
     <div class="card">
-        <p>From strangers to forever. This is our journey of love, growth, and commitment.</p>
+        A rustic love story written softly through time.
+    </div>
+</section>
+
+<!-- SLIDESHOW -->
+<section>
+    <h2>Moments</h2>
+    <div class="slideshow">
+        <div class="slide"><img src="https://i.imgur.com/HgBD7Mz.jpeg"></div>
+        <div class="slide"><img src="https://i.imgur.com/kZ9Y1kr.jpeg"></div>
+        <div class="slide"><img src="https://i.imgur.com/fDf6us1.jpeg"></div>
     </div>
 </section>
 
@@ -133,18 +221,15 @@ footer {
     <div class="card">
         <p><strong>Date:</strong> August 8, 2026</p>
         <p><strong>Time:</strong> 3:00 PM</p>
-        <p><strong>Venue:</strong> Maribojoc Church Bohol</p>
+        <p><strong>Venue:</strong> Maribojoc Church, Bohol</p>
     </div>
 </section>
 
-<!-- ORDER OF EVENTS -->
+<!-- MAP -->
 <section>
-    <h2>Order of Events</h2>
-    <div class="card timeline">
-        <div class="timeline-item">💒 Ceremony - 3:00 PM</div>
-        <div class="timeline-item">📸 Photos - 4:00 PM</div>
-        <div class="timeline-item">🍽️ Dinner - 6:00 PM</div>
-        <div class="timeline-item">💃 Party - 8:00 PM</div>
+    <h2>Location</h2>
+    <div class="map">
+        <iframe src="YOUR_GOOGLE_MAP_EMBED" width="100%" height="300" style="border:0;" loading="lazy"></iframe>
     </div>
 </section>
 
@@ -152,23 +237,56 @@ footer {
 <section>
     <h2>RSVP</h2>
     <div class="card">
-        <p>Please confirm your attendance.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">Click here to RSVP</a>
+        <a href="YOUR_GOOGLE_FORM_LINK" target="_blank">Click here to RSVP</a>
     </div>
 </section>
 
-<!-- GIFTS + QR -->
-<section>
-    <h2>Capture the Love</h2>
-    <div class="card">
-        <p>Scan below for more details</p>
-        <img src="https://i.imgur.com/AnVOf83.jpeg" width="200">
-    </div>
-</section>
+<script>
 
-<footer>
-    Made with love 💍
-</footer>
+// SCROLL
+const sections=document.querySelectorAll('section');
+const obs=new IntersectionObserver(e=>{
+    e.forEach(x=>{
+        if(x.isIntersecting)x.target.classList.add('show');
+    });
+});
+sections.forEach(s=>obs.observe(s));
+
+// COUNTDOWN
+const wedding=new Date("August 8, 2026 15:00:00").getTime();
+setInterval(()=>{
+    let now=new Date().getTime();
+    let d=wedding-now;
+    let day=86400000,h=3600000,m=60000,s=1000;
+
+    document.getElementById("days").innerText=Math.floor(d/day);
+    document.getElementById("hours").innerText=Math.floor((d%day)/h);
+    document.getElementById("minutes").innerText=Math.floor((d%h)/m);
+    document.getElementById("seconds").innerText=Math.floor((d%m)/s);
+},1000);
+
+// SLIDESHOW
+let i=0;
+function show(){
+    let slides=document.querySelectorAll(".slide");
+    slides.forEach(s=>s.style.display="none");
+    i++;
+    if(i>slides.length)i=1;
+    slides[i-1].style.display="block";
+    setTimeout(show,3000);
+}
+show();
+
+// PETALS
+for(let i=0;i<40;i++){
+    let p=document.createElement("div");
+    p.className="petal";
+    p.style.left=Math.random()*100+"vw";
+    p.style.animationDuration=(5+Math.random()*6)+"s";
+    document.body.appendChild(p);
+}
+
+</script>
 
 </body>
 </html>

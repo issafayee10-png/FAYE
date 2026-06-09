@@ -9,280 +9,49 @@
 
 <style>
 :root{
-    --accent:#b06a3c;
-    --glass:rgba(255,255,255,0.10);
-    --text:#3b2a22;
-    --title:#3a241a;
+--accent:#b06a3c;
+--glass:rgba(255,255,255,0.10);
+--text:#3b2a22;
+--title:#3a241a;
 }
 
 /* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-    font-family:'Montserrat',sans-serif;
-    overflow-x:hidden;
-    color:#fff;
+font-family:'Montserrat',sans-serif;
+overflow-x:hidden;
+color:#fff;
 }
 
 /* BACKGROUND */
 body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:url('https://i.imgur.com/HgBD7Mz.jpeg') center/cover no-repeat;
-    transform:scale(1.1);
-    animation:zoom 25s infinite alternate;
-    z-index:-2;
+content:"";
+position:fixed;
+inset:0;
+    background:url('https://i.imgur.com/OKELscg.jpeg') center/cover no-repeat;
+    background:url('https://i.imgur.com/R0CVxJG.jpeg') center/cover no-repeat;
+transform:scale(1.1);
+animation:zoom 25s infinite alternate;
+z-index:-2;
 }
 body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:linear-gradient(180deg,rgba(0,0,0,0.35),rgba(0,0,0,0.75));
-    z-index:-1;
+content:"";
+position:fixed;
+inset:0;
+background:linear-gradient(180deg,rgba(0,0,0,0.35),rgba(0,0,0,0.75));
+z-index:-1;
 }
 @keyframes zoom{
-    from{transform:scale(1.1)}
-    to{transform:scale(1.2)}
+from{transform:scale(1.1)}
+to{transform:scale(1.2)}
 }
 
 /* HERO */
 .hero{
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
 }
-.hero h1{
-    font-family:'Great Vibes',cursive;
-    font-size:clamp(48px,6vw,80px);
-}
-.hero p{
-    margin-top:10px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    font-size:12px;
-    opacity:0.85;
-}
-
-/* SECTIONS */
-section{
-    max-width:900px;
-    margin:auto;
-    padding:70px 18px;
-    text-align:center;
-}
-
-/* TITLES */
-h2{
-    font-family:'Playfair Display',serif;
-    font-size:22px;
-    color:#d8b08c;
-    margin-bottom:20px;
-    letter-spacing:1px;
-    opacity:0;
-    transform:translateY(20px);
-    transition:0.8s ease;
-}
-
-/* GLASS CARD (IMAGE STYLE) */
-.glass{
-    background:var(--glass);
-    backdrop-filter:blur(12px);
-    border-radius:18px;
-    padding:25px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.25);
-    opacity:0;
-    transform:translateY(30px);
-    transition:0.8s ease;
-}
-
-/* TEXT */
-.glass p{
-    color:#f3e7df;
-    line-height:1.7;
-    font-size:14px;
-    margin-bottom:10px;
-}
-
-/* RSVP */
-.rsvp{
-    margin-top:20px;
-    text-align:center;
-}
-.rsvp a{
-    display:inline-block;
-    padding:12px 24px;
-    background:var(--accent);
-    border-radius:30px;
-    color:#fff;
-    text-decoration:none;
-    font-size:13px;
-    transition:0.3s;
-}
-.rsvp a:hover{
-    transform:scale(1.05);
-}
-
-/* COUNTDOWN */
-.countdown{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-}
-.countdown div{
-    min-width:70px;
-}
-.countdown h4{
-    font-size:20px;
-}
-.countdown p{
-    font-size:11px;
-    opacity:0.8;
-}
-
-/* MAP */
-iframe{
-    width:100%;
-    height:280px;
-    border-radius:16px;
-    border:0;
-}
-
-/* MUSIC */
-.music-btn{
-    position:fixed;
-    bottom:18px;
-    right:18px;
-    background:var(--accent);
-    border:none;
-    color:#fff;
-    padding:10px 14px;
-    border-radius:30px;
-    z-index:999;
-}
-
-/* REVEAL */
-.show{
-    opacity:1 !important;
-    transform:translateY(0) !important;
-}
-</style>
-</head>
-
-<body>
-
-<!-- AUDIO -->
-<audio id="music" loop>
-<source src="https://raw.githubusercontent.com/issafayee10-png/FAYE/refs/heads/main/atlasaudio-sentimental-piano-512258.mp3">
-</audio>
-
-<button class="music-btn" onclick="toggleMusic()">🎵</button>
-
-<!-- HERO -->
-<section class="hero">
-    <div>
-        <h1>Ezra May</h1>
-        <h1>&</h1>
-        <h1>Gil Jun</h1>
-        <p>We’re getting married 💍</p>
-        <p>August 8, 2026</p>
-    </div>
-</section>
-
-<!-- STORY -->
-<section>
-    <h2>Our Story</h2>
-    <div class="glass">
-        <p>Ours began in quiet in-between moments that changed everything.</p>
-        <p>What started as conversations became home, comfort, and belonging.</p>
-        <p>We chose each other — every step, every day, toward forever.</p>
-    </div>
-</section>
-
-<!-- MOMENTS -->
-<section>
-    <h2>Moments</h2>
-    <div class="glass">
-        <p>Fragments of laughter, silence, and memories we’ll never forget.</p>
-        <p>Each moment becomes part of our story.</p>
-    </div>
-</section>
-
-<!-- DETAILS -->
-<section>
-    <h2>Wedding Details</h2>
-    <div class="glass">
-        <p><b>Date:</b> August 8, 2026</p>
-        <p><b>Time:</b> 3:00 PM</p>
-        <p><b>Venue:</b> Maribojoc Church, Bohol</p>
-    </div>
-
-    <!-- RSVP CENTERED -->
-    <div class="rsvp">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScueXyfNMzhTMvDMtRraSgaGaPuuLd8D1myfrTZ8_XArCumfw/viewform" target="_blank">
-            RSVP 💌
-        </a>
-    </div>
-</section>
-
-<!-- LOCATION -->
-<section>
-    <h2>Location</h2>
-    <div class="glass">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18..."></iframe>
-    </div>
-</section>
-
-<!-- COUNTDOWN -->
-<section>
-    <h2>Countdown</h2>
-    <div class="glass countdown">
-        <div><h4 id="days">0</h4><p>Days</p></div>
-        <div><h4 id="hours">0</h4><p>Hrs</p></div>
-        <div><h4 id="minutes">0</h4><p>Mins</p></div>
-        <div><h4 id="seconds">0</h4><p>Secs</p></div>
-    </div>
-</section>
-
-<script>
-
-/* MUSIC */
-const music=document.getElementById("music");
-document.addEventListener("pointerdown",()=>music.play(),{once:true});
-function toggleMusic(){
-    music.paused ? music.play() : music.pause();
-}
-
-/* COUNTDOWN */
-const wedding=new Date("August 8, 2026 15:00:00").getTime();
-setInterval(()=>{
-let now=new Date().getTime();
-let d=wedding-now;
-
-let day=86400000,h=3600000,m=60000,s=1000;
-
-document.getElementById("days").innerText=Math.floor(d/day);
-document.getElementById("hours").innerText=Math.floor((d%day)/h);
-document.getElementById("minutes").innerText=Math.floor((d%h)/m);
-document.getElementById("seconds").innerText=Math.floor((d%m)/s);
-},1000);
-
-/* SCROLL REVEAL */
-const obs=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){
-e.target.classList.add("show");
-}
-});
-});
-
-document.querySelectorAll("h2,.glass").forEach(el=>{
-obs.observe(el);
-});
-
-</script>
-
-</body>
-</html>
